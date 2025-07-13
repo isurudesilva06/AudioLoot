@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">Product Details - AudioLoot</title>
+  <meta id="page-description" name="description" content="View detailed information about premium audio equipment.">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <nav class="navbar container">
+      <a href="index.html" class="logo">
+        <svg class="logo-icon" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="3"/>
+          <rect x="15" y="7" width="2" height="11" rx="1" fill="currentColor"/>
+        </svg>
+        Audio<span>Loot</span>
+      </a>
+      
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+      
+      <div class="nav-icons">
+        <button class="icon-btn" id="search-btn" aria-label="Search">
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="m21 21-4.35-4.35"/>
+          </svg>
+        </button>
+        
+        <a href="cart.html" class="icon-btn" aria-label="Shopping Cart">
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="9" cy="21" r="1"/>
+            <circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61l1.38-7.39H6"/>
+          </svg>
+          <span class="cart-count">0</span>
+        </a>
+        
+        <div class="auth-buttons">
+          <a href="login.html" class="btn btn-outline">Login</a>
+          <a href="register.html" class="btn btn-primary">Sign Up</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Breadcrumb -->
+    <section class="breadcrumb-section">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="breadcrumb-separator">›</span>
+          <a href="products.html">Products</a>
+          <span class="breadcrumb-separator">›</span>
+          <span id="breadcrumb-category">Loading...</span>
+          <span class="breadcrumb-separator">›</span>
+          <span id="breadcrumb-product">Loading...</span>
+        </nav>
+      </div>
+    </section>
+
+    <!-- Product Detail -->
+    <section class="product-detail-section">
+      <div class="container">
+        <div id="product-detail-content">
+          <!-- Loading state -->
+          <div id="product-loading" class="product-loading">
+            <div class="spinner"></div>
+            <p>Loading product details...</p>
+          </div>
+
+          <!-- Error state -->
+          <div id="product-error" class="product-error" style="display: none;">
+            <div class="error-icon">
+              <svg width="64" height="64" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <h2>Product Not Found</h2>
+            <p>The product you're looking for doesn't exist or has been removed.</p>
+            <div class="error-actions">
+              <a href="products.html" class="btn btn-primary">Browse Products</a>
+              <a href="index.html" class="btn btn-outline">Back to Home</a>
+            </div>
+          </div>
+
+          <!-- Product content will be inserted here -->
+          <div id="product-content" style="display: none;">
+            <!-- This will be populated by JavaScript -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Products -->
+    <section id="related-products-section" class="related-products section" style="display: none;">
+      <div class="container">
+        <div class="section-header text-center mb-8">
+          <h2>Related Products</h2>
+          <p class="text-lg text-secondary">You might also like these items</p>
+        </div>
+        
+        <div id="related-products-grid" class="grid grid-auto gap-6">
+          <!-- Related products will be loaded here -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-logo">
+            <svg class="logo-icon" viewBox="0 0 32 32" fill="none">
+              <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="3"/>
+              <rect x="15" y="7" width="2" height="11" rx="1" fill="currentColor"/>
+            </svg>
+            <span>AudioLoot</span>
+          </div>
+          <p>Premium audio equipment for audiophiles and music enthusiasts.</p>
+        </div>
+        
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Shop</h4>
+            <a href="products.html?category=headphones">Headphones</a>
+            <a href="products.html?category=speakers">Speakers</a>
+            <a href="products.html?category=earbuds">Earbuds</a>
+            <a href="products.html?category=accessories">Accessories</a>
+          </div>
+          
+          <div class="footer-column">
+            <h4>Support</h4>
+            <a href="#contact">Contact Us</a>
+            <a href="#faq">FAQ</a>
+            <a href="#shipping">Shipping Info</a>
+            <a href="#returns">Returns</a>
+          </div>
+          
+          <div class="footer-column">
+            <h4>Company</h4>
+            <a href="#about">About Us</a>
+            <a href="#careers">Careers</a>
+            <a href="#press">Press</a>
+            <a href="#blog">Blog</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2024 AudioLoot. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Review Modal -->
+  <div id="review-modal" class="modal" style="display: none;">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Write a Review</h3>
+        <button class="modal-close" id="close-review-modal" aria-label="Close modal">
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      
+      <div class="modal-body">
+        <form id="review-form">
+          <div class="form-group">
+            <label for="review-rating" class="form-label">Rating</label>
+            <div class="rating-input" id="review-rating">
+              <button type="button" class="star-btn" data-rating="1">★</button>
+              <button type="button" class="star-btn" data-rating="2">★</button>
+              <button type="button" class="star-btn" data-rating="3">★</button>
+              <button type="button" class="star-btn" data-rating="4">★</button>
+              <button type="button" class="star-btn" data-rating="5">★</button>
+            </div>
+            <input type="hidden" id="rating-value" name="rating" value="0">
+          </div>
+
+          <div class="form-group">
+            <label for="review-title" class="form-label">Review Title</label>
+            <input 
+              type="text" 
+              id="review-title" 
+              name="title" 
+              class="form-input" 
+              placeholder="Brief title for your review"
+              required
+              maxlength="100"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="review-comment" class="form-label">Review</label>
+            <textarea 
+              id="review-comment" 
+              name="comment" 
+              class="form-input" 
+              rows="4" 
+              placeholder="Share your thoughts about this product..."
+              required
+              maxlength="500"
+            ></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-outline" id="cancel-review">Cancel</button>
+            <button type="submit" class="btn btn-primary" id="submit-review">Submit Review</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/product.js"></script>
+
+  <style>
+    /* Product Detail Specific Styles */
+    .breadcrumb-section {
+      background: var(--gray-50);
+      padding: var(--space-4) 0;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--font-size-sm);
+      color: var(--text-secondary);
+    }
+
+    .breadcrumb a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    .breadcrumb-separator {
+      color: var(--text-tertiary);
+    }
+
+    .product-detail-section {
+      padding: var(--space-8) 0;
+    }
+
+    .product-loading,
+    .product-error {
+      text-align: center;
+      padding: var(--space-16);
+    }
+
+    .product-loading p {
+      margin-top: var(--space-4);
+      color: var(--text-secondary);
+    }
+
+    .error-icon {
+      margin: 0 auto var(--space-6);
+      color: var(--text-tertiary);
+    }
+
+    .product-error h2 {
+      color: var(--text-secondary);
+      margin-bottom: var(--space-4);
+    }
+
+    .product-error p {
+      color: var(--text-tertiary);
+      margin-bottom: var(--space-8);
+      font-size: var(--font-size-lg);
+    }
+
+    .error-actions {
+      display: flex;
+      gap: var(--space-4);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .product-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+      margin-bottom: var(--space-12);
+    }
+
+    .product-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .main-image-container {
+      position: relative;
+      aspect-ratio: 1;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--gray-100);
+    }
+
+    .main-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      cursor: zoom-in;
+    }
+
+    .image-zoom-overlay {
+      position: absolute;
+      top: var(--space-4);
+      right: var(--space-4);
+      background: rgba(0, 0, 0, 0.6);
+      color: var(--white);
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-base);
+      font-size: var(--font-size-sm);
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+    }
+
+    .product-badges {
+      position: absolute;
+      top: var(--space-4);
+      left: var(--space-4);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .thumbnail-gallery {
+      display: flex;
+      gap: var(--space-3);
+      overflow-x: auto;
+      padding-bottom: var(--space-2);
+    }
+
+    .thumbnail {
+      width: 80px;
+      height: 80px;
+      border-radius: var(--radius-base);
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border-color var(--transition-fast);
+      flex-shrink: 0;
+    }
+
+    .thumbnail.active {
+      border-color: var(--primary-color);
+    }
+
+    .thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-info {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-6);
+    }
+
+    .product-title {
+      font-size: var(--font-size-3xl);
+      margin-bottom: var(--space-2);
+    }
+
+    .product-brand {
+      color: var(--primary-color);
+      font-weight: 600;
+      font-size: var(--font-size-lg);
+      margin-bottom: var(--space-4);
+    }
+
+    .product-rating-section {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+
+    .product-rating {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .rating-link {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-size: var(--font-size-sm);
+    }
+
+    .rating-link:hover {
+      text-decoration: underline;
+    }
+
+    .product-price-section {
+      margin-bottom: var(--space-6);
+    }
+
+    .price-container {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-3);
+      margin-bottom: var(--space-2);
+    }
+
+    .current-price {
+      font-size: var(--font-size-3xl);
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .original-price {
+      font-size: var(--font-size-xl);
+      color: var(--text-secondary);
+      text-decoration: line-through;
+    }
+
+    .discount-badge {
+      background: var(--error-color);
+      color: var(--white);
+      padding: var(--space-1) var(--space-2);
+      border-radius: var(--radius-full);
+      font-size: var(--font-size-xs);
+      font-weight: 600;
+    }
+
+    .stock-status {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--font-size-sm);
+    }
+
+    .stock-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .stock-indicator.in-stock {
+      background: var(--success-color);
+    }
+
+    .stock-indicator.low-stock {
+      background: var(--warning-color);
+    }
+
+    .stock-indicator.out-of-stock {
+      background: var(--error-color);
+    }
+
+    .product-description {
+      line-height: 1.7;
+      margin-bottom: var(--space-6);
+    }
+
+    .product-actions {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      margin-bottom: var(--space-8);
+    }
+
+    .quantity-container {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+    }
+
+    .quantity-controls {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius-base);
+      overflow: hidden;
+    }
+
+    .quantity-btn {
+      background: var(--gray-100);
+      border: none;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color var(--transition-fast);
+      font-weight: 600;
+      font-size: var(--font-size-lg);
+    }
+
+    .quantity-btn:hover {
+      background: var(--gray-200);
+    }
+
+    .quantity-input {
+      border: none;
+      width: 80px;
+      height: 44px;
+      text-align: center;
+      font-weight: 600;
+      background: var(--white);
+    }
+
+    .quantity-input:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: var(--space-3);
+    }
+
+    .add-to-cart-main {
+      flex: 1;
+    }
+
+    .wishlist-main {
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wishlist-main.active {
+      background: var(--error-color);
+      border-color: var(--error-color);
+      color: var(--white);
+    }
+
+    .product-features {
+      border-top: 1px solid var(--gray-200);
+      padding-top: var(--space-6);
+    }
+
+    .features-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-size: var(--font-size-sm);
+    }
+
+    .feature-icon {
+      color: var(--success-color);
+      flex-shrink: 0;
+    }
+
+    .product-tabs {
+      margin-top: var(--space-12);
+      border-top: 1px solid var(--gray-200);
+      padding-top: var(--space-8);
+    }
+
+    .tab-buttons {
+      display: flex;
+      gap: var(--space-6);
+      margin-bottom: var(--space-8);
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      padding: var(--space-4) 0;
+      font-size: var(--font-size-lg);
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all var(--transition-fast);
+    }
+
+    .tab-btn.active {
+      color: var(--primary-color);
+      border-bottom-color: var(--primary-color);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .reviews-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-8);
+    }
+
+    .reviews-summary {
+      display: flex;
+      align-items: center;
+      gap: var(--space-6);
+    }
+
+    .rating-overview {
+      text-align: center;
+    }
+
+    .rating-score {
+      font-size: var(--font-size-3xl);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: var(--space-1);
+    }
+
+    .rating-distribution {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .rating-bar {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-size: var(--font-size-sm);
+    }
+
+    .bar-container {
+      width: 100px;
+      height: 8px;
+      background: var(--gray-200);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: var(--warning-color);
+      border-radius: var(--radius-full);
+    }
+
+    .review-item {
+      border-bottom: 1px solid var(--gray-200);
+      padding: var(--space-6) 0;
+    }
+
+    .review-item:last-child {
+      border-bottom: none;
+    }
+
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: var(--space-3);
+    }
+
+    .reviewer-info {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .reviewer-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--primary-color);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+    }
+
+    .reviewer-details h4 {
+      margin-bottom: var(--space-1);
+      font-size: var(--font-size-base);
+    }
+
+    .review-date {
+      font-size: var(--font-size-sm);
+      color: var(--text-secondary);
+    }
+
+    .review-title {
+      font-weight: 600;
+      margin-bottom: var(--space-2);
+    }
+
+    .review-content {
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+
+    /* Modal Styles */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-content {
+      position: relative;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      max-width: 500px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: var(--shadow-xl);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-6);
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .modal-header h3 {
+      margin: 0;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: var(--space-2);
+      border-radius: var(--radius-base);
+      transition: background-color var(--transition-fast);
+    }
+
+    .modal-close:hover {
+      background: var(--gray-100);
+    }
+
+    .modal-body {
+      padding: var(--space-6);
+    }
+
+    .rating-input {
+      display: flex;
+      gap: var(--space-1);
+      margin-bottom: var(--space-2);
+    }
+
+    .star-btn {
+      background: none;
+      border: none;
+      font-size: var(--font-size-2xl);
+      color: var(--gray-300);
+      cursor: pointer;
+      transition: color var(--transition-fast);
+    }
+
+    .star-btn:hover,
+    .star-btn.active {
+      color: var(--warning-color);
+    }
+
+    .form-actions {
+      display: flex;
+      gap: var(--space-3);
+      justify-content: flex-end;
+      margin-top: var(--space-6);
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 768px) {
+      .product-layout {
+        grid-template-columns: 1fr;
+        gap: var(--space-8);
+      }
+
+      .product-title {
+        font-size: var(--font-size-2xl);
+      }
+
+      .current-price {
+        font-size: var(--font-size-2xl);
+      }
+
+      .action-buttons {
+        flex-direction: column;
+      }
+
+      .wishlist-main {
+        width: 100%;
+        height: 48px;
+      }
+
+      .tab-buttons {
+        overflow-x: auto;
+        padding-bottom: var(--space-2);
+      }
+
+      .tab-btn {
+        white-space: nowrap;
+        min-width: 120px;
+      }
+
+      .reviews-summary {
+        flex-direction: column;
+        gap: var(--space-4);
+        text-align: center;
+      }
+
+      .modal-content {
+        width: 95%;
+        margin: var(--space-4);
+      }
+    }
+  </style>
+</body>
+</html>
