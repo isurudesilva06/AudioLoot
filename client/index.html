@@ -71,58 +71,149 @@
     </nav>
   </header>
 
-  <!-- Main Content -->
-  <main class="main-content">
-    <!-- Hero Section -->
-    <section class="hero section particle-bg cyber-grid">
-      <div class="container">
-        <div class="hero-content" style="text-align: center; max-width: 1000px; margin: 0 auto;">
-          <div class="hero-text scroll-reveal">
-            <h1 class="hero-title" data-text="Experience the Future of Audio">Experience the Future of Audio</h1>
-            <p class="hero-description scroll-reveal" style="transition-delay: 200ms;">
-              Discover the <span class="holographic">AudioLoot</span> 
-              collection featuring cutting-edge headphones, speakers, and audio gear engineered for the ultimate sonic experience.
-            </p>
-            <div class="hero-actions scroll-reveal" style="transition-delay: 400ms;">
-              <a href="products.html" class="btn btn-primary">Shop Now</a>
-              <a href="#featured" class="btn btn-outline">Explore Collection</a>
-            </div>
-          </div>
-          
-          <div class="hero-image scroll-reveal-right parallax float">
-            <div class="hero-image-container tilt-hover">
-              <div class="hero-bg-shape morphing-blob"></div>
-              <img src="https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=600&h=600&fit=crop" 
-                   alt="Premium Headphones" class="hero-product-image">
-              
-              <!-- Feature Bubbles -->
-              <div class="feature-bubbles">
-                <div class="feature-bubble glass pulse-glow float">
-                  <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="icon-pulse">
-                    <circle cx="12" cy="12" r="10"/>
-                    <polyline points="12,6 12,12 16,14"/>
-                  </svg>
-                  <span class="text-glow-secondary">Premium Quality</span>
-                </div>
-                <div class="feature-bubble glass pulse-glow float-delayed">
-                  <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="icon-pulse">
-                    <path d="M9 12l2 2 4-4"/>
-                    <circle cx="12" cy="12" r="10"/>
-                  </svg>
-                  <span class="text-glow-accent">Verified Authentic</span>
-                </div>
-                <div class="feature-bubble glass pulse-glow float">
-                  <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="icon-pulse">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                  </svg>
-                  <span class="text-glow">Award Winning</span>
-                </div>
-              </div>
-            </div>
+  <!-- GadgetBazar Landing Section (Custom Add) -->
+  <section class="gadgetbazar-landing">
+    <div class="gbz-container">
+      <header class="gbz-header">
+        <div class="gbz-logo">
+          <span class="gbz-logo-icon">🔌</span>
+          <span class="gbz-logo-text">Gadget<span style="color:#2196f3;">Bazar</span></span>
+        </div>
+        <nav class="gbz-nav">
+          <a href="#">Home</a>
+          <a href="#">About</a>
+          <a href="#">Product</a>
+          <a href="#">Contact</a>
+        </nav>
+        <div class="gbz-actions">
+          <button class="gbz-icon-btn">🔍</button>
+          <button class="gbz-icon-btn">🛒</button>
+          <button class="gbz-get-started">Get Started</button>
+        </div>
+      </header>
+      <div class="gbz-main">
+        <div class="gbz-left">
+          <h1 class="gbz-title">Introducing Our<br>Top Pick of the Week</h1>
+          <p class="gbz-desc">Behold the <span style="color:#2196f3;">TechFit</span> Pro Smartwatch, the ultimate companion for modern living.</p>
+          <a href="#" class="gbz-learn-more">Learn More &rarr;</a>
+        </div>
+        <div class="gbz-center">
+          <div class="gbz-watch-stack">
+            <img src="assets/smartwatch1.png" alt="Smartwatch 1" class="gbz-watch gbz-watch-top">
+            <img src="assets/smartwatch2.png" alt="Smartwatch 2" class="gbz-watch gbz-watch-bottom">
+            <div class="gbz-bg-splash"></div>
           </div>
         </div>
+        <div class="gbz-features">
+          <div class="gbz-feature"><span class="gbz-feature-icon">🏃‍♂️</span> Fitness Tracking</div>
+          <div class="gbz-feature"><span class="gbz-feature-icon">🎵</span> Music Control</div>
+          <div class="gbz-feature"><span class="gbz-feature-icon">🔗</span> Compatibility</div>
+          <div class="gbz-feature"><span class="gbz-feature-icon">📍</span> GPS Tracking</div>
+        </div>
       </div>
-    </section>
+    </div>
+    <style>
+      .gadgetbazar-landing {
+        background: linear-gradient(120deg, #f8fafc 60%, #e3eaf7 100%);
+        padding: 0 0 3rem 0;
+        position: relative;
+        overflow: hidden;
+        font-family: 'Montserrat', sans-serif;
+      }
+      .gbz-container { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem 0 1rem; }
+      .gbz-header {
+        display: flex; align-items: center; justify-content: space-between;
+        padding-bottom: 1.5rem; border-bottom: 1px solid #e0e7ef;
+      }
+      .gbz-logo { display: flex; align-items: center; font-size: 1.5rem; font-weight: 700; }
+      .gbz-logo-icon { font-size: 2rem; margin-right: 0.5rem; color: #2196f3; }
+      .gbz-logo-text { letter-spacing: 1px; }
+      .gbz-nav a {
+        margin: 0 1rem; color: #222; text-decoration: none; font-weight: 500;
+        transition: color 0.2s;
+      }
+      .gbz-nav a:hover { color: #2196f3; }
+      .gbz-actions { display: flex; align-items: center; gap: 0.5rem; }
+      .gbz-icon-btn {
+        background: #f0f4fa; border: none; border-radius: 50%; width: 36px; height: 36px;
+        font-size: 1.2rem; cursor: pointer; margin-right: 0.5rem;
+        transition: background 0.2s;
+      }
+      .gbz-icon-btn:hover { background: #e3eaf7; }
+      .gbz-get-started {
+        background: #2196f3; color: #fff; border: none; border-radius: 6px;
+        padding: 0.5rem 1.2rem; font-weight: 600; font-size: 1rem; cursor: pointer;
+        transition: background 0.2s;
+      }
+      .gbz-get-started:hover { background: #1769aa; }
+      .gbz-main {
+        display: flex; align-items: center; justify-content: space-between;
+        margin-top: 2.5rem; position: relative;
+      }
+      .gbz-left { flex: 1.2; }
+      .gbz-title {
+        font-size: 2.8rem; font-weight: 800; margin-bottom: 1.2rem; line-height: 1.1;
+      }
+      .gbz-desc { font-size: 1.15rem; color: #222; margin-bottom: 1.8rem; }
+      .gbz-learn-more {
+        display: inline-block; background: #2196f3; color: #fff; padding: 0.7rem 1.5rem;
+        border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 1rem;
+        box-shadow: 0 2px 8px rgba(33,150,243,0.08);
+        transition: background 0.2s;
+      }
+      .gbz-learn-more:hover { background: #1769aa; }
+      .gbz-center {
+        flex: 1; display: flex; align-items: center; justify-content: center; position: relative;
+        min-width: 320px; min-height: 320px;
+      }
+      .gbz-watch-stack { position: relative; width: 260px; height: 260px; }
+      .gbz-watch {
+        position: absolute; width: 180px; height: 180px; object-fit: contain;
+        box-shadow: 0 8px 32px rgba(33,150,243,0.10);
+        border-radius: 2rem;
+        transition: transform 0.3s;
+      }
+      .gbz-watch-top { top: 0; left: 40px; z-index: 2; transform: rotate(-18deg); }
+      .gbz-watch-bottom { top: 60px; left: 0; z-index: 1; transform: rotate(18deg); }
+      .gbz-bg-splash {
+        position: absolute; top: 40px; left: 30px; width: 200px; height: 120px;
+        background: #2196f3; opacity: 0.18; border-radius: 80px 120px 100px 80px;
+        z-index: 0; filter: blur(8px);
+      }
+      .gbz-features {
+        flex: 0.9; display: flex; flex-direction: column; gap: 1.1rem;
+        align-items: flex-start; justify-content: center; margin-left: 2rem;
+      }
+      .gbz-feature {
+        background: #e3eaf7; color: #222; border-radius: 2rem; padding: 0.5rem 1.3rem;
+        font-weight: 500; font-size: 1.05rem; box-shadow: 0 2px 8px rgba(33,150,243,0.07);
+        display: flex; align-items: center; gap: 0.7rem;
+        margin-bottom: 0.2rem;
+      }
+      .gbz-feature-icon { font-size: 1.3rem; }
+      @media (max-width: 900px) {
+        .gbz-main { flex-direction: column; gap: 2.5rem; }
+        .gbz-features { flex-direction: row; flex-wrap: wrap; margin-left: 0; gap: 0.7rem; }
+        .gbz-feature { margin-bottom: 0; }
+        .gbz-center { min-width: 220px; min-height: 220px; }
+        .gbz-watch-stack { width: 180px; height: 180px; }
+        .gbz-watch { width: 120px; height: 120px; }
+        .gbz-bg-splash { width: 120px; height: 60px; }
+      }
+      @media (max-width: 600px) {
+        .gbz-header { flex-direction: column; gap: 1rem; }
+        .gbz-main { gap: 1.5rem; }
+        .gbz-title { font-size: 2rem; }
+        .gbz-center { min-width: 120px; min-height: 120px; }
+        .gbz-watch-stack { width: 100px; height: 100px; }
+        .gbz-watch { width: 60px; height: 60px; }
+        .gbz-bg-splash { width: 60px; height: 30px; }
+      }
+    </style>
+  </section>
+  <!-- End GadgetBazar Landing Section -->
+
+  
 
     <!-- Featured Products Section -->
     <section id="featured" class="featured-products section">
