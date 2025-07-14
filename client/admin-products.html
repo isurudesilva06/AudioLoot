@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Products | AudioLoot</title>
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+  <div class="admin-dashboard">
+    <header class="admin-header">
+      <div class="admin-title">Admin Dashboard</div>
+      <button id="admin-logout-btn" class="admin-logout">Logout</button>
+    </header>
+    <aside class="admin-sidebar">
+      <nav>
+        <ul>
+          <li><a href="admin-products.html" class="active">Products</a></li>
+          <li><a href="admin-orders.html">Orders</a></li>
+          <li><a href="add-product.html">Add Product</a></li>
+          <li><a href="#" id="sidebar-logout-link">Logout</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <main class="admin-main">
+      <div class="admin-products-header">
+        <h1>Product Management</h1>
+        <a href="add-product.html" class="admin-btn add-product-btn">Add New Product</a>
+      </div>
+      <div class="admin-products-table-wrapper">
+        <table class="admin-products-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Category</th>
+              <th>Stock</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="products-table-body">
+            <!-- Products will be rendered here by JS -->
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+  <script src="js/api.js"></script>
+  <script src="js/admin/dashboard.js"></script>
+  <script src="js/admin/products.js"></script>
+</body>
+</html> 

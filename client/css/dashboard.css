@@ -1,0 +1,118 @@
+/* Admin Dashboard Styles */
+.admin-dashboard {
+  display: flex;
+  min-height: 100vh;
+  background: #f7f9fb;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.admin-header {
+  position: fixed;
+  top: 0;
+  left: 200px;
+  right: 0;
+  height: 60px;
+  background: #222e3c;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.admin-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.admin-logout {
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.admin-logout:hover {
+  background: #c0392b;
+}
+
+.admin-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100vh;
+  background: #253044;
+  color: #fff;
+  padding-top: 60px;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.03);
+  z-index: 99;
+}
+
+.admin-sidebar nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.admin-sidebar nav ul li {
+  margin: 0;
+}
+.admin-sidebar nav ul li a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  transition: background 0.2s, color 0.2s;
+}
+.admin-sidebar nav ul li a:hover,
+.admin-sidebar nav ul li a.active {
+  background: #34425a;
+  color: #ffd700;
+}
+
+.admin-main {
+  margin-left: 200px;
+  padding: 80px 2rem 2rem 2rem;
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 900px) {
+  .admin-sidebar {
+    width: 160px;
+  }
+  .admin-header {
+    left: 160px;
+    padding: 0 1rem;
+  }
+  .admin-main {
+    margin-left: 160px;
+    padding: 80px 1rem 1rem 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    padding-top: 0;
+    box-shadow: none;
+  }
+  .admin-header {
+    left: 0;
+    position: static;
+    width: 100%;
+  }
+  .admin-main {
+    margin-left: 0;
+    padding: 70px 0.5rem 0.5rem 0.5rem;
+  }
+} 

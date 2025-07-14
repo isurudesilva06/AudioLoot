@@ -607,7 +607,13 @@ const seedOrders = async (users, products) => {
       }
     ];
     
-    const orders = await Order.insertMany(sampleOrders);
+    // Use Order.create() in a loop to trigger pre('save') middleware
+    const orders = [];
+    for (const orderData of sampleOrders) {
+      const order = new Order(orderData);
+      await order.save();
+      orders.push(order);
+    }
     console.log(`✅ ${orders.length} orders seeded successfully`);
     return orders;
   } catch (error) {

@@ -1,335 +1,253 @@
-# AudioLoot Backend API
+# AudioLoot E-Commerce Platform
 
-A comprehensive Node.js backend for the AudioLoot e-commerce platform, built with Express, MongoDB, and Cloudinary.
+A full-stack e-commerce platform for premium audio equipment, featuring a Node.js/Express backend and a modern static frontend (HTML/CSS/JS). The backend provides a robust REST API, while the frontend offers a responsive, user-friendly shopping experience.
 
-## Features
+---
 
-- 🔐 **Authentication & Authorization** - JWT-based auth with role-based access control
-- 🛍️ **Product Management** - Full CRUD operations with categories, search, and filtering
-- 🛒 **Shopping Cart** - Persistent cart functionality with user sessions
-- 📦 **Order Management** - Complete order lifecycle from creation to delivery
-- 👤 **User Profiles** - User management with addresses and preferences
-- ⭐ **Reviews & Ratings** - Product review system with aggregated ratings
-- 🔍 **Search & Filter** - Advanced product search and filtering capabilities
-- 📊 **Admin Dashboard** - Comprehensive admin features and statistics
-- ☁️ **Image Management** - Cloudinary integration for image uploads
-- 🔒 **Security** - Rate limiting, CORS, helmet, and input validation
+## Project Overview
 
-## Tech Stack
+**AudioLoot** is a complete e-commerce solution for audiophiles and music enthusiasts. It includes:
+- **Backend**: Node.js, Express, MongoDB, JWT authentication, Cloudinary for image storage, and robust security features.
+- **Frontend**: Static HTML, CSS (modular, with page-specific styles), and vanilla JavaScript for dynamic UI and API integration.
 
-- **Runtime**: Node.js
-- **Framework**: Express.js
-- **Database**: MongoDB with Mongoose
-- **Authentication**: JWT (JSON Web Tokens)
-- **Image Storage**: Cloudinary
-- **Validation**: Joi
-- **Security**: Helmet, CORS, Rate Limiting
-- **Password Hashing**: bcryptjs
+---
 
 ## Project Structure
 
 ```
-server/
-├── config/
-│   ├── database.js          # MongoDB connection
-│   └── cloudinary.js        # Cloudinary configuration
-├── controllers/              # Route controllers (future enhancement)
-├── middleware/
-│   ├── auth.js              # Authentication middleware
-│   └── validation.js        # Input validation schemas
-├── models/
-│   ├── User.js              # User model
-│   ├── Product.js           # Product model
-│   └── Order.js             # Order model
-├── routes/
-│   ├── auth.js              # Authentication routes
-│   ├── users.js             # User management routes
-│   ├── products.js          # Product CRUD routes
-│   └── orders.js            # Order management routes
-├── scripts/
-│   └── seedDatabase.js      # Database seeding script
-├── utils/
-│   └── jwt.js               # JWT utilities
-├── .env.example             # Environment variables template
-├── package.json             # Dependencies and scripts
-└── server.js                # Main application entry point
+AudioLoot/
+├── add_admin_user.js         # MongoDB admin user creation script
+├── client/                   # Frontend static site
+│   ├── index.html            # Home page
+│   ├── login.html            # Login page
+│   ├── register.html         # Registration page
+│   ├── cart.html             # Shopping cart
+│   ├── checkout.html         # Checkout flow
+│   ├── products.html         # Product listing
+│   ├── product.html          # Product details
+│   ├── profile.html          # User profile
+│   ├── assets/
+│   │   ├── favicon.svg       # Custom favicon (branding)
+│   │   └── images/           # Product and UI images
+│   ├── css/                  # Global and page-specific styles
+│   │   ├── styles.css        # Main global styles
+│   │   ├── base.css, layout.css, ...
+│   │   └── pages/            # home.css, cart.css, products.css, profile.css, auth.css
+│   ├── js/                   # Modular JS for each page/feature
+│   │   ├── app.js            # Main app logic (UI, auth, cart)
+│   │   ├── api.js            # API service (handles all backend requests)
+│   │   ├── products.js, cart.js, ...
+│   └── components/           # (reserved for future modular HTML/JS components)
+├── server/                   # Backend API
+│   ├── config/
+│   │   ├── database.js       # MongoDB connection
+│   │   └── cloudinary.js     # Cloudinary configuration
+│   ├── controllers/          # (empty, for future route controllers)
+│   ├── middleware/
+│   │   ├── auth.js           # Auth middleware (JWT, roles)
+│   │   └── validation.js     # Joi validation schemas
+│   ├── models/
+│   │   ├── User.js           # User model
+│   │   ├── Product.js        # Product model
+│   │   └── Order.js          # Order model
+│   ├── routes/
+│   │   ├── auth.js           # Auth endpoints
+│   │   ├── users.js          # User profile, cart, wishlist, addresses
+│   │   ├── products.js       # Product CRUD, reviews, categories
+│   │   └── orders.js         # Order management
+│   ├── scripts/
+│   │   └── seedDatabase.js   # Database seeding script
+│   ├── utils/
+│   │   └── jwt.js            # JWT utilities
+│   ├── .gitignore
+│   ├── package.json
+│   ├── package-lock.json
+│   └── server.js             # Main backend entry point
+└── .vscode/                  # Editor config (optional)
 ```
 
-## Installation & Setup
+---
 
-### 1. Prerequisites
+## Backend (server/)
 
-- Node.js (v16 or higher)
-- MongoDB (local or MongoDB Atlas)
-- Cloudinary account (for image management)
+### Features
+- **Authentication & Authorization**: JWT-based, role-based access (user, admin, moderator)
+- **Product Management**: CRUD, categories, search, filtering, reviews
+- **Shopping Cart & Wishlist**: Persistent, per-user
+- **Order Management**: Full lifecycle, admin controls, status tracking
+- **User Profiles**: Addresses, preferences, password change
+- **Security**: Rate limiting, CORS, helmet, input validation, account locking
+- **Image Management**: Cloudinary integration
 
-### 2. Clone and Install
+### Scripts
+- `npm start` — Start production server
+- `npm run dev` — Start dev server with nodemon
+- `npm run seed` — Seed database with sample data
+- `add_admin_user.js` (project root) — MongoDB shell script to create an admin user in the database (see script for usage)
 
-```bash
-# Navigate to server directory
-cd server
+### Environment Variables
+See `server/.env.example` for all required variables:
+- `PORT`, `NODE_ENV`, `MONGODB_URI`, `JWT_SECRET`, `CLOUDINARY_*`, `CORS_ORIGINS`, etc.
 
-# Install dependencies
-npm install
-```
+### API Endpoints
+See below for a summary. All endpoints are under `/api` and require JWT auth unless noted.
 
-### 3. Environment Configuration
+#### Auth
+- `POST /auth/register` — Register
+- `POST /auth/login` — Login
+- `GET /auth/me` — Current user
+- `PUT /auth/change-password` — Change password
+- `POST /auth/logout` — Logout
+- `POST /auth/verify-token` — Verify JWT
 
-Copy the example environment file and configure your settings:
+#### Products
+- `GET /products` — List (filter, search, paginate)
+- `GET /products/featured` — Featured
+- `GET /products/categories` — Categories
+- `GET /products/:id` — Details
+- `POST /products` — Create (admin)
+- `PUT /products/:id` — Update (admin)
+- `DELETE /products/:id` — Delete (admin)
+- `POST /products/:id/reviews` — Add review
+- `GET /products/:id/reviews` — Get reviews
 
-```bash
-cp .env.example .env
-```
+#### Users
+- `GET /users/profile` — Profile
+- `PUT /users/profile` — Update profile
+- `GET /users/addresses` — List addresses
+- `POST /users/addresses` — Add address
+- `PUT /users/addresses/:id` — Update address
+- `DELETE /users/addresses/:id` — Delete address
+- `GET /users/cart` — Get cart
+- `POST /users/cart` — Add to cart
+- `PUT /users/cart/:productId` — Update cart item
+- `DELETE /users/cart/:productId` — Remove from cart
+- `DELETE /users/cart` — Clear cart
+- `GET /users/wishlist` — Get wishlist
+- `POST /users/wishlist/:productId` — Add to wishlist
+- `DELETE /users/wishlist/:productId` — Remove from wishlist
 
-Update `.env` with your configuration:
+#### Orders
+- `GET /orders` — List orders (user or admin)
+- `GET /orders/:id` — Order details
+- `POST /orders` — Create order
+- `PUT /orders/:id/status` — Update status (admin)
+- `PUT /orders/:id/shipping` — Update shipping (admin)
+- `POST /orders/:id/notes` — Add note
+- `PUT /orders/:id/cancel` — Cancel order
+- `GET /orders/stats/summary` — Order stats (admin)
 
-```env
-# Server Configuration
-PORT=5000
-NODE_ENV=development
+### Models
+- **User**: name, email, password, phone, addresses, preferences, wishlist, cart, role, status, etc.
+- **Product**: name, description, price, originalPrice, category, brand, images, features, specifications, stock, rating, reviews, tags, SEO fields
+- **Order**: user, items, shipping/billing address, pricing, payment, shipping, status, notes, history
 
-# Database
-MONGODB_URI=mongodb://localhost:27017/audioloot
-# For MongoDB Atlas: mongodb+srv://username:password@cluster.mongodb.net/audioloot
+### Middleware & Utilities
+- **Auth**: JWT verification, role-based access, optional auth
+- **Validation**: Joi schemas for all major entities
+- **JWT Utils**: Token generation/verification
+- **Database/Cloudinary Config**: Centralized connection/config logic
 
-# JWT Secret (use a strong, random string in production)
-JWT_SECRET=your-super-secret-jwt-key-here-make-it-long-and-random
+### Seeding & Admin Setup
+- `npm run seed` — Seeds DB with products, users (including admin), and orders
+- `add_admin_user.js` — Run in MongoDB shell to create a DB admin (see script for details)
 
-# Cloudinary Configuration
-CLOUDINARY_CLOUD_NAME=your-cloud-name
-CLOUDINARY_API_KEY=your-api-key
-CLOUDINARY_API_SECRET=your-api-secret
+### Error & Success Responses
+- Consistent JSON structure for all API responses (see below for format)
 
-# CORS Origins (comma-separated)
-CORS_ORIGINS=http://localhost:3000,http://localhost:8080,http://127.0.0.1:5500
-```
+---
 
-### 4. Database Setup
+## Frontend (client/)
 
-Seed the database with sample data:
+### Features
+- **Modern, responsive UI**: Built with semantic HTML, modular CSS, and vanilla JS
+- **Pages**: Home, Products, Product Details, Cart, Checkout, Login, Register, Profile
+- **Dynamic content**: All product, cart, order, and user data fetched from backend API
+- **Authentication**: JWT-based, stored in localStorage, with auto-logout and UI updates
+- **Cart & Wishlist**: Persistent (localStorage + server sync)
+- **Profile management**: Update info, addresses, password
+- **Checkout flow**: Multi-step, with validation
+- **Branding**: Custom favicon (`assets/favicon.svg`), modern design
 
-```bash
-npm run seed
-```
+### Structure
+- **HTML**: One file per page (index, products, product, cart, checkout, login, register, profile)
+- **CSS**: Modular, with global and page-specific files (see `css/pages/`)
+- **JS**: Modular, with one file per major feature/page (see `js/`)
+- **Assets**: All images and icons in `assets/`
 
-This will create:
-- 12 sample products across different categories
-- 3 users (including an admin account)
-- 2 sample orders
+### Running the Frontend
+- No build step required — open `client/index.html` in your browser (or use a static server for CORS/API calls)
+- For local API calls, ensure the backend is running on `localhost:5000` (or update `js/api.js` as needed)
+- All API requests are made to `/api` endpoints on the backend
 
-**Admin Credentials:**
+### API Integration
+- All frontend data (products, cart, orders, user) is fetched via the backend REST API
+- See `js/api.js` for all API methods and usage
+
+---
+
+## Local Development
+
+### Prerequisites
+- Node.js (v16+)
+- MongoDB (local or Atlas)
+- Cloudinary account (for image uploads)
+
+### Setup
+1. **Clone the repo**
+2. **Backend**:
+   - `cd server`
+   - `npm install`
+   - Copy `.env.example` to `.env` and fill in your config
+   - `npm run seed` to seed the DB (optional)
+   - `npm run dev` to start the backend
+3. **Frontend**:
+   - Open `client/index.html` in your browser, or serve with a static server (e.g. `npx serve client`)
+   - The frontend will connect to the backend API at `localhost:5000` by default
+
+### Admin Credentials (seeded by default)
 - Email: `admin@audioloot.com`
 - Password: `admin123`
 
-### 5. Start the Server
+---
 
-```bash
-# Development mode (with nodemon)
-npm run dev
+## API Response Format
 
-# Production mode
-npm start
-```
-
-The server will start on `http://localhost:5000`
-
-## API Documentation
-
-### Base URL
-```
-http://localhost:5000/api
-```
-
-### Authentication
-
-Most endpoints require authentication via JWT token in the Authorization header:
-```
-Authorization: Bearer <your-jwt-token>
-```
-
-### Main Endpoints
-
-#### Authentication
-- `POST /auth/register` - User registration
-- `POST /auth/login` - User login
-- `GET /auth/me` - Get current user profile
-- `PUT /auth/change-password` - Change password
-- `POST /auth/logout` - Logout user
-- `POST /auth/verify-token` - Verify JWT token
-
-#### Products
-- `GET /products` - Get all products (with filtering, search, pagination)
-- `GET /products/featured` - Get featured products
-- `GET /products/categories` - Get product categories with counts
-- `GET /products/:id` - Get single product
-- `POST /products` - Create product (Admin only)
-- `PUT /products/:id` - Update product (Admin only)
-- `DELETE /products/:id` - Delete product (Admin only)
-- `POST /products/:id/reviews` - Add product review
-- `GET /products/:id/reviews` - Get product reviews
-
-#### Users
-- `GET /users/profile` - Get user profile
-- `PUT /users/profile` - Update user profile
-- `GET /users/addresses` - Get user addresses
-- `POST /users/addresses` - Add new address
-- `PUT /users/addresses/:id` - Update address
-- `DELETE /users/addresses/:id` - Delete address
-- `GET /users/cart` - Get user cart
-- `POST /users/cart` - Add item to cart
-- `PUT /users/cart/:productId` - Update cart item quantity
-- `DELETE /users/cart/:productId` - Remove item from cart
-- `DELETE /users/cart` - Clear entire cart
-- `GET /users/wishlist` - Get user wishlist
-- `POST /users/wishlist/:productId` - Add to wishlist
-- `DELETE /users/wishlist/:productId` - Remove from wishlist
-
-#### Orders
-- `GET /orders` - Get user orders (or all orders for admin)
-- `GET /orders/:id` - Get single order
-- `POST /orders` - Create new order
-- `PUT /orders/:id/status` - Update order status (Admin only)
-- `PUT /orders/:id/shipping` - Update shipping info (Admin only)
-- `POST /orders/:id/notes` - Add note to order
-- `PUT /orders/:id/cancel` - Cancel order
-- `GET /orders/stats/summary` - Get order statistics (Admin only)
-
-### Query Parameters
-
-#### Products
-- `page` - Page number (default: 1)
-- `limit` - Items per page (default: 12)
-- `category` - Filter by category
-- `minPrice`, `maxPrice` - Price range filter
-- `brand` - Filter by brand
-- `rating` - Minimum rating filter
-- `search` - Search in name, description, brand
-- `sort` - Sort by: price, rating, name, createdAt
-- `order` - Sort order: asc, desc
-- `featured` - Show only featured products
-
-#### Example Requests
-
-```bash
-# Get all headphones under $300
-GET /api/products?category=headphones&maxPrice=300
-
-# Search for Sony products
-GET /api/products?search=sony
-
-# Get featured products
-GET /api/products?featured=true
-
-# Register new user
-POST /api/auth/register
-{
-  "firstName": "John",
-  "lastName": "Doe",
-  "email": "john@example.com",
-  "password": "password123"
-}
-
-# Add item to cart
-POST /api/users/cart
-{
-  "productId": "65f1234567890abcdef12345",
-  "quantity": 2
-}
-```
-
-## Development
-
-### Available Scripts
-
-- `npm start` - Start production server
-- `npm run dev` - Start development server with nodemon
-- `npm run seed` - Seed database with sample data
-
-### API Testing
-
-You can test the API using tools like:
-- Postman
-- Insomnia
-- Thunder Client (VS Code extension)
-- curl
-
-### Error Handling
-
-The API returns consistent error responses:
-
+**Error:**
 ```json
 {
   "status": "error",
   "message": "Error description",
   "errors": [
-    {
-      "field": "fieldName",
-      "message": "Validation error message"
-    }
+    { "field": "fieldName", "message": "Validation error message" }
   ]
 }
 ```
 
-### Success Responses
-
-Successful responses follow this format:
-
+**Success:**
 ```json
 {
   "status": "success",
-  "data": {
-    // Response data
-  },
+  "data": { /* ... */ },
   "message": "Success message"
 }
 ```
 
-## Security Features
-
-- **JWT Authentication** - Stateless authentication with configurable expiration
-- **Password Hashing** - bcryptjs with salt rounds
-- **Rate Limiting** - Prevent brute force attacks
-- **CORS Protection** - Configurable cross-origin resource sharing
-- **Input Validation** - Joi schema validation for all inputs
-- **Security Headers** - Helmet.js for security headers
-- **Account Locking** - Temporary account lock after failed login attempts
-
-## Production Deployment
-
-### Environment Variables for Production
-
-Ensure these are properly configured:
-
-```env
-NODE_ENV=production
-JWT_SECRET=<strong-random-secret>
-MONGODB_URI=<production-mongodb-uri>
-CLOUDINARY_CLOUD_NAME=<production-cloudinary-name>
-CLOUDINARY_API_KEY=<production-cloudinary-key>
-CLOUDINARY_API_SECRET=<production-cloudinary-secret>
-```
-
-### Deployment Considerations
-
-1. Use a process manager like PM2
-2. Set up proper logging
-3. Configure reverse proxy (nginx)
-4. Enable HTTPS
-5. Set up database backups
-6. Monitor application performance
+---
 
 ## Contributing
-
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
 4. Add tests if applicable
 5. Submit a pull request
 
-## License
+---
 
-This project is licensed under the MIT License.
+## License
+MIT
+
+---
 
 ## Support
-
 For support or questions, please contact the development team or create an issue in the repository.
