@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AudioLoot - Premium Audio Equipment</title>
+  <meta name="description" content="Discover premium audio equipment for audiophiles. High-quality headphones, speakers, earbuds, and accessories.">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/effects.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages/home.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <nav class="navbar container">
+      <a href="index.html" class="logo">
+        <svg class="logo-icon" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="3"/>
+          <rect x="15" y="7" width="2" height="11" rx="1" fill="currentColor"/>
+        </svg>
+        Audio<span>Loot</span>
+      </a>
+      
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+      
+      <button class="mobile-menu-btn" aria-label="Toggle mobile menu">
+        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+      
+      <div class="nav-icons">
+        <button class="icon-btn" id="search-btn" aria-label="Search">
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="m21 21-4.35-4.35"/>
+          </svg>
+        </button>
+        
+        <a href="cart.html" class="icon-btn" aria-label="Shopping Cart">
+          <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <circle cx="9" cy="21" r="1"/>
+            <circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61l1.38-7.39H6"/>
+          </svg>
+          <span class="cart-count">0</span>
+        </a>
+        
+        <div class="auth-buttons">
+          <a href="login.html" class="btn btn-outline">Login</a>
+          <a href="register.html" class="btn btn-primary">Sign Up</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- GadgetBazar Landing Section (Custom Add) -->
+  <section class="gadgetbazar-landing">
+    <div class="gbz-container">
+      <header class="gbz-header">
+        <div class="gbz-logo">
+          <span class="gbz-logo-icon">🔌</span>
+          <span class="gbz-logo-text">Gadget<span style="color:#2196f3;">Bazar</span></span>
+        </div>
+        <nav class="gbz-nav">
+          <a href="#">Home</a>
+          <a href="#">About</a>
+          <a href="#">Product</a>
+          <a href="#">Contact</a>
+        </nav>
+        <div class="gbz-actions">
+          <button class="gbz-icon-btn">🔍</button>
+          <button class="gbz-icon-btn">🛒</button>
+          <button class="gbz-get-started">Get Started</button>
+        </div>
+      </header>
+      <div class="gbz-main">
+        <div class="gbz-left">
+          <h1 class="gbz-title">Introducing Our<br>Top Pick of the Week</h1>
+          <p class="gbz-desc">Behold the <span style="color:#2196f3;">TechFit</span> Pro Smartwatch, the ultimate companion for modern living.</p>
+          <a href="#" class="gbz-learn-more">Learn More &rarr;</a>
+        </div>
+        <div class="gbz-center">
+          <div class="gbz-watch-stack">
+            <img src="assets/smartwatch1.png" alt="Smartwatch 1" class="gbz-watch gbz-watch-top">
+            <img src="assets/smartwatch2.png" alt="Smartwatch 2" class="gbz-watch gbz-watch-bottom">
+            <div class="gbz-bg-splash"></div>
+          </div>
+        </div>
+        <div class="gbz-features">
+          <div class="gbz-feature"><span class="gbz-feature-icon">🏃‍♂️</span> Fitness Tracking</div>
+          <div class="gbz-feature"><span class="gbz-feature-icon">🎵</span> Music Control</div>
+          <div class="gbz-feature"><span class="gbz-feature-icon">🔗</span> Compatibility</div>
+          <div class="gbz-feature"><span class="gbz-feature-icon">📍</span> GPS Tracking</div>
+        </div>
+      </div>
+    </div>
+    <style>
+      .gadgetbazar-landing {
+        background: linear-gradient(120deg, #f8fafc 60%, #e3eaf7 100%);
+        padding: 0 0 3rem 0;
+        position: relative;
+        overflow: hidden;
+        font-family: 'Montserrat', sans-serif;
+      }
+      .gbz-container { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem 0 1rem; }
+      .gbz-header {
+        display: flex; align-items: center; justify-content: space-between;
+        padding-bottom: 1.5rem; border-bottom: 1px solid #e0e7ef;
+      }
+      .gbz-logo { display: flex; align-items: center; font-size: 1.5rem; font-weight: 700; }
+      .gbz-logo-icon { font-size: 2rem; margin-right: 0.5rem; color: #2196f3; }
+      .gbz-logo-text { letter-spacing: 1px; }
+      .gbz-nav a {
+        margin: 0 1rem; color: #222; text-decoration: none; font-weight: 500;
+        transition: color 0.2s;
+      }
+      .gbz-nav a:hover { color: #2196f3; }
+      .gbz-actions { display: flex; align-items: center; gap: 0.5rem; }
+      .gbz-icon-btn {
+        background: #f0f4fa; border: none; border-radius: 50%; width: 36px; height: 36px;
+        font-size: 1.2rem; cursor: pointer; margin-right: 0.5rem;
+        transition: background 0.2s;
+      }
+      .gbz-icon-btn:hover { background: #e3eaf7; }
+      .gbz-get-started {
+        background: #2196f3; color: #fff; border: none; border-radius: 6px;
+        padding: 0.5rem 1.2rem; font-weight: 600; font-size: 1rem; cursor: pointer;
+        transition: background 0.2s;
+      }
+      .gbz-get-started:hover { background: #1769aa; }
+      .gbz-main {
+        display: flex; align-items: center; justify-content: space-between;
+        margin-top: 2.5rem; position: relative;
+      }
+      .gbz-left { flex: 1.2; }
+      .gbz-title {
+        font-size: 2.8rem; font-weight: 800; margin-bottom: 1.2rem; line-height: 1.1;
+      }
+      .gbz-desc { font-size: 1.15rem; color: #222; margin-bottom: 1.8rem; }
+      .gbz-learn-more {
+        display: inline-block; background: #2196f3; color: #fff; padding: 0.7rem 1.5rem;
+        border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 1rem;
+        box-shadow: 0 2px 8px rgba(33,150,243,0.08);
+        transition: background 0.2s;
+      }
+      .gbz-learn-more:hover { background: #1769aa; }
+      .gbz-center {
+        flex: 1; display: flex; align-items: center; justify-content: center; position: relative;
+        min-width: 320px; min-height: 320px;
+      }
+      .gbz-watch-stack { position: relative; width: 260px; height: 260px; }
+      .gbz-watch {
+        position: absolute; width: 180px; height: 180px; object-fit: contain;
+        box-shadow: 0 8px 32px rgba(33,150,243,0.10);
+        border-radius: 2rem;
+        transition: transform 0.3s;
+      }
+      .gbz-watch-top { top: 0; left: 40px; z-index: 2; transform: rotate(-18deg); }
+      .gbz-watch-bottom { top: 60px; left: 0; z-index: 1; transform: rotate(18deg); }
+      .gbz-bg-splash {
+        position: absolute; top: 40px; left: 30px; width: 200px; height: 120px;
+        background: #2196f3; opacity: 0.18; border-radius: 80px 120px 100px 80px;
+        z-index: 0; filter: blur(8px);
+      }
+      .gbz-features {
+        flex: 0.9; display: flex; flex-direction: column; gap: 1.1rem;
+        align-items: flex-start; justify-content: center; margin-left: 2rem;
+      }
+      .gbz-feature {
+        background: #e3eaf7; color: #222; border-radius: 2rem; padding: 0.5rem 1.3rem;
+        font-weight: 500; font-size: 1.05rem; box-shadow: 0 2px 8px rgba(33,150,243,0.07);
+        display: flex; align-items: center; gap: 0.7rem;
+        margin-bottom: 0.2rem;
+      }
+      .gbz-feature-icon { font-size: 1.3rem; }
+      @media (max-width: 900px) {
+        .gbz-main { flex-direction: column; gap: 2.5rem; }
+        .gbz-features { flex-direction: row; flex-wrap: wrap; margin-left: 0; gap: 0.7rem; }
+        .gbz-feature { margin-bottom: 0; }
+        .gbz-center { min-width: 220px; min-height: 220px; }
+        .gbz-watch-stack { width: 180px; height: 180px; }
+        .gbz-watch { width: 120px; height: 120px; }
+        .gbz-bg-splash { width: 120px; height: 60px; }
+      }
+      @media (max-width: 600px) {
+        .gbz-header { flex-direction: column; gap: 1rem; }
+        .gbz-main { gap: 1.5rem; }
+        .gbz-title { font-size: 2rem; }
+        .gbz-center { min-width: 120px; min-height: 120px; }
+        .gbz-watch-stack { width: 100px; height: 100px; }
+        .gbz-watch { width: 60px; height: 60px; }
+        .gbz-bg-splash { width: 60px; height: 30px; }
+      }
+    </style>
+  </section>
+  <!-- End GadgetBazar Landing Section -->
+
+  
+
+    <!-- Featured Products Section -->
+    <section id="featured" class="featured-products section">
+      <div class="container">
+        <div class="section-header text-center mb-8">
+          <h2>Featured Products</h2>
+          <p class="text-lg text-secondary">Discover our most popular and highly-rated audio equipment</p>
+        </div>
+        
+        <div id="featured-products-grid" class="product-grid">
+          <!-- Featured products will be loaded here -->
+        </div>
+        
+        <div class="text-center mt-8">
+          <a href="products.html" class="btn btn-primary btn-lg">View All Products</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories section">
+      <div class="container">
+        <div class="section-header text-center mb-8">
+          <h2>Shop by Category</h2>
+          <p class="text-lg text-secondary">Find the perfect audio equipment for your needs</p>
+        </div>
+        
+        <div id="categories-grid" class="categories-grid">
+          <!-- Categories will be loaded dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Best Sellers Section -->
+    <section class="bestsellers section">
+      <div class="container">
+        <div class="section-header text-center mb-8">
+          <h2>Best Sellers</h2>
+          <p class="text-lg text-secondary">Our most popular audio equipment chosen by customers</p>
+        </div>
+        
+        <div id="bestsellers-grid" class="product-grid">
+          <!-- Best sellers will be loaded here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Customer Testimonials Section -->
+    <section class="testimonials section">
+      <div class="container">
+        <div class="section-header text-center mb-8">
+          <h2>What Our Customers Say</h2>
+          <p class="text-lg text-secondary">Real reviews from audio enthusiasts who trust AudioLoot</p>
+        </div>
+        
+        <div class="testimonials-container">
+          <div id="testimonials-carousel" class="testimonials-carousel">
+            <!-- Testimonials will be loaded here -->
+          </div>
+          
+          <div class="testimonials-navigation">
+            <button class="testimonial-btn prev" id="testimonial-prev" aria-label="Previous testimonial">
+              <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+              </svg>
+            </button>
+            <button class="testimonial-btn next" id="testimonial-next" aria-label="Next testimonial">
+              <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter section">
+      <div class="container">
+        <div class="newsletter-content">
+          <div class="newsletter-text">
+            <h2>Stay Updated with AudioLoot</h2>
+            <p>Get exclusive deals, new product alerts, and audio tips delivered to your inbox</p>
+            <ul class="newsletter-benefits">
+              <li>
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                10% off your next purchase
+              </li>
+              <li>
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                Early access to new releases
+              </li>
+              <li>
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                Exclusive member-only deals
+              </li>
+            </ul>
+          </div>
+          
+          <form id="newsletter-form" class="newsletter-form">
+            <div class="newsletter-input-group">
+              <input 
+                type="email" 
+                id="newsletter-email" 
+                name="email" 
+                class="newsletter-input" 
+                placeholder="Enter your email address"
+                required
+              >
+              <button type="submit" class="btn btn-primary newsletter-btn">
+                Subscribe Now
+              </button>
+            </div>
+            <p class="newsletter-disclaimer">
+              We respect your privacy. Unsubscribe at any time.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features section">
+      <div class="container">
+        <div class="features-grid grid grid-cols-3 gap-8">
+          <div class="feature-item text-center">
+            <div class="feature-icon">
+              <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+            </div>
+            <h3>Expert Curation</h3>
+            <p>Every product is carefully selected by our team of audio experts to ensure the highest quality and performance.</p>
+          </div>
+          
+          <div class="feature-item text-center">
+            <div class="feature-icon">
+              <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M9 12l2 2 4-4"/>
+                <circle cx="12" cy="12" r="10"/>
+              </svg>
+            </div>
+            <h3>Authenticity Guaranteed</h3>
+            <p>All products are 100% authentic and come with manufacturer warranties and our satisfaction guarantee.</p>
+          </div>
+          
+          <div class="feature-item text-center">
+            <div class="feature-icon">
+              <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+              </svg>
+            </div>
+            <h3>Fast & Free Shipping</h3>
+            <p>Enjoy free shipping on orders over $100 and fast delivery options to get your gear quickly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-logo">
+            <svg class="logo-icon" viewBox="0 0 32 32" fill="none">
+              <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="3"/>
+              <rect x="15" y="7" width="2" height="11" rx="1" fill="currentColor"/>
+            </svg>
+            <span>AudioLoot</span>
+          </div>
+          <p>Premium audio equipment for audiophiles and music enthusiasts.</p>
+        </div>
+        
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Shop</h4>
+            <a href="products.html?category=headphones">Headphones</a>
+            <a href="products.html?category=speakers">Speakers</a>
+            <a href="products.html?category=earbuds">Earbuds</a>
+            <a href="products.html?category=accessories">Accessories</a>
+          </div>
+          
+          <div class="footer-column">
+            <h4>Support</h4>
+            <a href="#contact">Contact Us</a>
+            <a href="#faq">FAQ</a>
+            <a href="#shipping">Shipping Info</a>
+            <a href="#returns">Returns</a>
+          </div>
+          
+          <div class="footer-column">
+            <h4>Company</h4>
+            <a href="#about">About Us</a>
+            <a href="#careers">Careers</a>
+            <a href="#press">Press</a>
+            <a href="#blog">Blog</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2024 AudioLoot. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/components/product-card.js"></script>
+  <script src="js/components/rating-widget.js"></script>
+  <script src="js/theme-manager.js"></script>
+  <script src="js/animation-controller.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

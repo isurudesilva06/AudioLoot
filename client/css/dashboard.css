@@ -1,0 +1,236 @@
+/* Admin Dashboard Styles */
+.admin-dashboard {
+  display: flex;
+  min-height: 100vh;
+  background: #f7f9fb;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.admin-header {
+  position: fixed;
+  top: 0;
+  left: 200px;
+  right: 0;
+  height: 60px;
+  background: #222e3c;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.admin-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.admin-logout {
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.admin-logout:hover {
+  background: #c0392b;
+}
+
+.admin-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100vh;
+  background: #253044;
+  color: #fff;
+  padding-top: 60px;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.03);
+  z-index: 99;
+}
+
+.admin-sidebar nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.admin-sidebar nav ul li {
+  margin: 0;
+}
+.admin-sidebar nav ul li a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  transition: background 0.2s, color 0.2s;
+}
+.admin-sidebar nav ul li a:hover,
+.admin-sidebar nav ul li a.active {
+  background: #34425a;
+  color: #ffd700;
+}
+
+.admin-main {
+  margin-left: 200px;
+  padding: 80px 2rem 2rem 2rem;
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 900px) {
+  .admin-sidebar {
+    width: 160px;
+  }
+  .admin-header {
+    left: 160px;
+    padding: 0 1rem;
+  }
+  .admin-main {
+    margin-left: 160px;
+    padding: 80px 1rem 1rem 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    padding-top: 0;
+    box-shadow: none;
+  }
+  .admin-header {
+    left: 0;
+    position: static;
+    width: 100%;
+  }
+  .admin-main {
+    margin-left: 0;
+    padding: 70px 0.5rem 0.5rem 0.5rem;
+  }
+} 
+
+/* Admin Buttons */
+.admin-btn {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0 0.2rem 0.2rem 0;
+  transition: background 0.2s, color 0.2s;
+  background: #34425a;
+  color: #fff;
+}
+.admin-btn:hover {
+  background: #222e3c;
+  color: #ffd700;
+}
+.add-product-btn, .submit-btn {
+  background: #27ae60;
+  color: #fff;
+}
+.add-product-btn:hover, .submit-btn:hover {
+  background: #219150;
+  color: #fff;
+}
+.edit-btn {
+  background: #2980b9;
+}
+.edit-btn:hover {
+  background: #1c5d85;
+}
+.delete-btn {
+  background: #e74c3c;
+}
+.delete-btn:hover {
+  background: #c0392b;
+}
+.update-status-btn {
+  background: #f39c12;
+  color: #fff;
+}
+.update-status-btn:hover {
+  background: #b9770e;
+  color: #fff;
+}
+
+/* Admin Tables */
+.admin-products-table, .admin-orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.admin-products-table th, .admin-orders-table th {
+  background: #253044;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+.admin-products-table td, .admin-orders-table td {
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: middle;
+}
+.admin-products-table tr:nth-child(even), .admin-orders-table tr:nth-child(even) {
+  background: #f7f9fb;
+}
+.admin-products-table tr:hover, .admin-orders-table tr:hover {
+  background: #f1f7ff;
+}
+
+/* Status Dropdown */
+.order-status-select {
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  background: #f7f9fb;
+  color: #253044;
+  outline: none;
+  transition: border 0.2s;
+}
+.order-status-select:focus {
+  border: 1.5px solid #2980b9;
+}
+
+/* Responsive Table */
+@media (max-width: 700px) {
+  .admin-products-table, .admin-orders-table, .admin-products-table thead, .admin-orders-table thead, .admin-products-table tbody, .admin-orders-table tbody, .admin-products-table th, .admin-orders-table th, .admin-products-table td, .admin-orders-table td, .admin-products-table tr, .admin-orders-table tr {
+    display: block;
+  }
+  .admin-products-table tr, .admin-orders-table tr {
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    background: #fff;
+  }
+  .admin-products-table td, .admin-orders-table td {
+    padding: 0.7rem 1rem;
+    border: none;
+    position: relative;
+  }
+  .admin-products-table th, .admin-orders-table th {
+    display: none;
+  }
+  .admin-products-table td:before, .admin-orders-table td:before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #253044;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+} 

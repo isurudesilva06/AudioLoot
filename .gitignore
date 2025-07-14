@@ -1,0 +1,42 @@
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Claude AI local settings
+.claude/settings.local.json
+
+# Ignore log files
+*.log
+logs/
+
+# Ignore environment files (if any)
+.env
+.env.*
+
+# Ignore build artifacts (if any)
+dist/
+build/
+
+# Ignore dependency directories (if any)
+node_modules/
+bower_components/
+
+# Reference server/.gitignore for backend-specific rules
+# (see server/.gitignore for more details)
+
+# Ignore macOS system files recursively
+**/.DS_Store
+
+# Ignore Windows system files recursively
+**/Thumbs.db
+
+# Ignore package lock files in root (if any)
+package-lock.json
+yarn.lock 

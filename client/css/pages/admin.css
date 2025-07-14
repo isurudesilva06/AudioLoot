@@ -1,0 +1,63 @@
+/* Admin-specific styles for AudioLoot admin panel */
+
+/* Example: Admin sidebar navigation */
+.admin-sidebar {
+  background: var(--gray-100);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-base);
+  padding: var(--space-6) var(--space-4);
+  min-width: 220px;
+  min-height: 400px;
+  margin-right: var(--space-8);
+}
+.admin-sidebar .admin-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.admin-sidebar .admin-nav a {
+  color: var(--text-primary);
+  font-weight: 500;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-base);
+  transition: background var(--transition-fast);
+}
+.admin-sidebar .admin-nav a.active,
+.admin-sidebar .admin-nav a:hover {
+  background: var(--primary-light);
+  color: var(--primary-dark);
+}
+
+/* Example: Admin dashboard widget */
+.admin-widget {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-base);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+/* Example: Admin table tweaks */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+.admin-table th, .admin-table td {
+  padding: var(--space-4);
+  text-align: left;
+  border-bottom: 1px solid var(--gray-200);
+}
+.admin-table th {
+  background: var(--gray-100);
+  font-weight: 600;
+}
+.admin-table tr:last-child td {
+  border-bottom: none;
+} 
