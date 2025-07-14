@@ -849,6 +849,37 @@
   min-width: 220px;
 }
 
+/* Increase size of landing page content */
+.gbz-title {
+  font-size: 3.5rem;
+}
+.gbz-desc {
+  font-size: 1.5rem;
+}
+.gbz-learn-more {
+  font-size: 1.2rem;
+  padding: 1rem 2rem;
+}
+.gbz-feature {
+  font-size: 1.2rem;
+  padding: 0.8rem 2rem;
+}
+.gbz-watch {
+  width: 320px !important;
+  max-width: 100%;
+}
+@media (max-width: 900px) {
+  .gbz-title {
+    font-size: 2.2rem;
+  }
+  .gbz-desc {
+    font-size: 1.1rem;
+  }
+  .gbz-watch {
+    width: 180px !important;
+  }
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
   .hero-title {
