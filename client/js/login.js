@@ -17,11 +17,6 @@ class LoginPage {
     this.setupEventListeners();
     this.setupFormValidation();
     this.handleRedirect();
-    
-    // Check if already logged in
-    if (api.isAuthenticated()) {
-      this.redirectAfterLogin();
-    }
   }
 
   setupEventListeners() {

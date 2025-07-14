@@ -78,7 +78,7 @@ class RegisterPage {
 
   setupFormValidation() {
     // Add required attributes and patterns
-    this.emailInput.setAttribute('pattern', '[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$');
+    // Remove pattern attribute for email - HTML5 type="email" provides built-in validation
     this.passwordInput.setAttribute('minlength', '8');
     this.firstNameInput.setAttribute('pattern', '[A-Za-z\\s]{2,}');
     this.lastNameInput.setAttribute('pattern', '[A-Za-z\\s]{2,}');

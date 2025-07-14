@@ -67,7 +67,17 @@ class HomePage {
       }
 
       // Render products
-      container.innerHTML = products.map(product => this.createProductCard(product)).join('');
+      const productCards = products.map(product => this.createProductCard(product)).join('');
+      container.innerHTML = productCards;
+      
+      // Manually ensure visibility for dynamically loaded content
+      setTimeout(() => {
+        const cards = container.querySelectorAll('.product-card');
+        cards.forEach(card => {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        });
+      }, 100);
 
     } catch (error) {
       console.error('Failed to load featured products:', error);
@@ -77,18 +87,18 @@ class HomePage {
 
   createProductCard(product) {
     const mainImage = product.images?.[0]?.url || product.image || 'https://via.placeholder.com/300x300?text=No+Image';
-    const rating = product.averageRating || 0;
-    const reviewCount = product.reviewCount || 0;
-    const isOnSale = product.salePrice && product.salePrice < product.price;
-    const currentPrice = isOnSale ? product.salePrice : product.price;
-    const originalPrice = product.price;
+    const rating = product.rating?.average || product.averageRating || 0;
+    const reviewCount = product.rating?.count || product.reviewCount || 0;
+    const isOnSale = product.originalPrice && product.originalPrice > product.price;
+    const currentPrice = product.price;
+    const originalPrice = product.originalPrice;
 
     return `
-      <div class="product-card card">
+      <div class="product-card glass-card product-card-enhanced">
         <div class="product-image-container">
           <img src="${mainImage}" alt="${product.name}" class="product-image">
           ${isOnSale ? '<div class="sale-badge">Sale</div>' : ''}
-          ${product.featured ? '<div class="featured-badge">Featured</div>' : ''}
+          ${(product.isFeatured || product.featured) ? '<div class="featured-badge">Featured</div>' : ''}
           
           <div class="product-actions">
             <button class="action-btn wishlist-btn" data-product-id="${product._id}" aria-label="Add to wishlist">
@@ -204,11 +214,121 @@ class HomePage {
   }
 
   handleSearch() {
-    // Simple search implementation - could be enhanced
-    const searchTerm = prompt('Enter search term:');
-    if (searchTerm) {
-      window.location.href = `products.html?search=${encodeURIComponent(searchTerm)}`;
+    // Create a modern search modal instead of prompt
+    this.createSearchModal();
+  }
+
+  createSearchModal() {
+    // Remove existing modal if any
+    const existingModal = document.getElementById('search-modal');
+    if (existingModal) {
+      existingModal.remove();
     }
+
+    // Create search modal
+    const modal = document.createElement('div');
+    modal.id = 'search-modal';
+    modal.className = 'search-modal glass';
+    modal.innerHTML = `
+      <div class="search-modal-content">
+        <div class="search-modal-header">
+          <h3>Search Products</h3>
+          <button class="search-modal-close" aria-label="Close search">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+        <div class="search-modal-body">
+          <div class="search-input-container">
+            <input type="text" id="search-modal-input" class="search-modal-input" placeholder="Search for headphones, speakers, earbuds..." autofocus>
+            <button class="search-modal-btn" id="search-modal-btn">
+              <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="m21 21-4.35-4.35"/>
+              </svg>
+            </button>
+          </div>
+          <div class="search-suggestions">
+            <div class="suggestion-category">
+              <h4>Popular Categories</h4>
+              <div class="suggestion-items">
+                <button class="suggestion-item" data-search="headphones">Headphones</button>
+                <button class="suggestion-item" data-search="speakers">Speakers</button>
+                <button class="suggestion-item" data-search="earbuds">Earbuds</button>
+                <button class="suggestion-item" data-search="wireless">Wireless</button>
+              </div>
+            </div>
+            <div class="suggestion-category">
+              <h4>Popular Brands</h4>
+              <div class="suggestion-items">
+                <button class="suggestion-item" data-search="Sony">Sony</button>
+                <button class="suggestion-item" data-search="Bose">Bose</button>
+                <button class="suggestion-item" data-search="Apple">Apple</button>
+                <button class="suggestion-item" data-search="Sennheiser">Sennheiser</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    // Add event listeners
+    const searchInput = modal.querySelector('#search-modal-input');
+    const searchBtn = modal.querySelector('#search-modal-btn');
+    const closeBtn = modal.querySelector('.search-modal-close');
+    const suggestionItems = modal.querySelectorAll('.suggestion-item');
+
+    // Search functionality
+    const performSearch = () => {
+      const searchTerm = searchInput.value.trim();
+      if (searchTerm) {
+        window.location.href = `products.html?search=${encodeURIComponent(searchTerm)}`;
+      }
+    };
+
+    searchBtn.addEventListener('click', performSearch);
+    searchInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        performSearch();
+      }
+    });
+
+    // Suggestion clicks
+    suggestionItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const searchTerm = item.dataset.search;
+        window.location.href = `products.html?search=${encodeURIComponent(searchTerm)}`;
+      });
+    });
+
+    // Close modal
+    const closeModal = () => {
+      modal.remove();
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    // ESC key to close
+    document.addEventListener('keydown', function escHandler(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+        document.removeEventListener('keydown', escHandler);
+      }
+    });
+
+    // Show modal with animation
+    setTimeout(() => {
+      modal.classList.add('active');
+    }, 10);
   }
 
   async loadCategories() {

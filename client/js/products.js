@@ -178,6 +178,16 @@ class ProductsPage {
         ...this.filters
       };
 
+      // Handle sort parameter - convert from "field-direction" to separate sort/order
+      if (params.sort && params.sort.includes('-')) {
+        const [sortField, sortOrder] = params.sort.split('-');
+        params.sort = sortField;
+        params.order = sortOrder;
+      } else if (params.sort === 'featured') {
+        params.featured = 'true';
+        delete params.sort;
+      }
+
       // Remove empty filters
       Object.keys(params).forEach(key => {
         if (params[key] === '' || params[key] === null || params[key] === undefined) {
@@ -197,7 +207,7 @@ class ProductsPage {
         this.filteredProducts = [...this.filteredProducts, ...newProducts];
       }
 
-      this.totalProducts = data.total || 0;
+      this.totalProducts = data.pagination?.totalProducts || data.total || 0;
       this.renderProducts(reset);
       this.updateProductsCount();
       this.updateLoadMoreButton();
@@ -294,11 +304,11 @@ class ProductsPage {
 
   createProductCard(product) {
     const mainImage = product.images?.[0]?.url || product.image || 'https://via.placeholder.com/300x300?text=No+Image';
-    const rating = product.averageRating || 0;
-    const reviewCount = product.reviewCount || 0;
-    const isOnSale = product.salePrice && product.salePrice < product.price;
-    const currentPrice = isOnSale ? product.salePrice : product.price;
-    const originalPrice = product.price;
+    const rating = product.rating?.average || product.averageRating || 0;
+    const reviewCount = product.rating?.count || product.reviewCount || 0;
+    const isOnSale = product.originalPrice && product.originalPrice > product.price;
+    const currentPrice = product.price;
+    const originalPrice = product.originalPrice;
 
     if (this.currentView === 'list') {
       return this.createProductListItem(product);
@@ -309,7 +319,7 @@ class ProductsPage {
         <div class="product-image-container">
           <img src="${mainImage}" alt="${product.name}" class="product-image">
           ${isOnSale ? '<div class="sale-badge">Sale</div>' : ''}
-          ${product.featured ? '<div class="featured-badge">Featured</div>' : ''}
+          ${(product.isFeatured || product.featured) ? '<div class="featured-badge">Featured</div>' : ''}
           
           <div class="product-actions">
             <button class="action-btn wishlist-btn" data-product-id="${product._id}" aria-label="Add to wishlist">
@@ -352,18 +362,18 @@ class ProductsPage {
 
   createProductListItem(product) {
     const mainImage = product.images?.[0]?.url || product.image || 'https://via.placeholder.com/150x150?text=No+Image';
-    const rating = product.averageRating || 0;
-    const reviewCount = product.reviewCount || 0;
-    const isOnSale = product.salePrice && product.salePrice < product.price;
-    const currentPrice = isOnSale ? product.salePrice : product.price;
-    const originalPrice = product.price;
+    const rating = product.rating?.average || product.averageRating || 0;
+    const reviewCount = product.rating?.count || product.reviewCount || 0;
+    const isOnSale = product.originalPrice && product.originalPrice > product.price;
+    const currentPrice = product.price;
+    const originalPrice = product.originalPrice;
 
     return `
       <div class="product-list-item card">
         <div class="product-list-image">
           <img src="${mainImage}" alt="${product.name}">
           ${isOnSale ? '<div class="sale-badge">Sale</div>' : ''}
-          ${product.featured ? '<div class="featured-badge">Featured</div>' : ''}
+          ${(product.isFeatured || product.featured) ? '<div class="featured-badge">Featured</div>' : ''}
         </div>
         
         <div class="product-list-content">

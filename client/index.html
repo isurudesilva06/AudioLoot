@@ -10,7 +10,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Styles -->
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/effects.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages/home.css">
   
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
@@ -68,49 +74,48 @@
   <!-- Main Content -->
   <main class="main-content">
     <!-- Hero Section -->
-    <section class="hero section">
+    <section class="hero section particle-bg cyber-grid">
       <div class="container">
-        <div class="hero-content grid grid-cols-2 items-center gap-8">
-          <div class="hero-text">
-            <h1 class="hero-title">Premium Audio Equipment for Audiophiles</h1>
-            <p class="hero-description text-lg">
-              Discover the <span style="color: var(--primary-color); font-weight: 600;">AudioLoot</span> 
-              collection featuring high-end headphones, speakers, and audio gear that delivers 
-              exceptional sound quality for the ultimate listening experience.
+        <div class="hero-content" style="text-align: center; max-width: 1000px; margin: 0 auto;">
+          <div class="hero-text scroll-reveal">
+            <h1 class="hero-title" data-text="Experience the Future of Audio">Experience the Future of Audio</h1>
+            <p class="hero-description scroll-reveal" style="transition-delay: 200ms;">
+              Discover the <span class="holographic">AudioLoot</span> 
+              collection featuring cutting-edge headphones, speakers, and audio gear engineered for the ultimate sonic experience.
             </p>
-            <div class="hero-actions flex gap-4 mt-8">
-              <a href="products.html" class="btn btn-primary btn-lg">Shop Now</a>
-              <a href="#featured" class="btn btn-outline btn-lg">Explore Collection</a>
+            <div class="hero-actions scroll-reveal" style="transition-delay: 400ms;">
+              <a href="products.html" class="btn btn-primary">Shop Now</a>
+              <a href="#featured" class="btn btn-outline">Explore Collection</a>
             </div>
           </div>
           
-          <div class="hero-image">
-            <div class="hero-image-container">
-              <div class="hero-bg-shape"></div>
+          <div class="hero-image scroll-reveal-right parallax float">
+            <div class="hero-image-container tilt-hover">
+              <div class="hero-bg-shape morphing-blob"></div>
               <img src="https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=600&h=600&fit=crop" 
                    alt="Premium Headphones" class="hero-product-image">
               
               <!-- Feature Bubbles -->
               <div class="feature-bubbles">
-                <div class="feature-bubble">
-                  <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="feature-bubble glass pulse-glow float">
+                  <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="icon-pulse">
                     <circle cx="12" cy="12" r="10"/>
                     <polyline points="12,6 12,12 16,14"/>
                   </svg>
-                  <span>Premium Quality</span>
+                  <span class="text-glow-secondary">Premium Quality</span>
                 </div>
-                <div class="feature-bubble">
-                  <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="feature-bubble glass pulse-glow float-delayed">
+                  <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="icon-pulse">
                     <path d="M9 12l2 2 4-4"/>
                     <circle cx="12" cy="12" r="10"/>
                   </svg>
-                  <span>Verified Authentic</span>
+                  <span class="text-glow-accent">Verified Authentic</span>
                 </div>
-                <div class="feature-bubble">
-                  <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="feature-bubble glass pulse-glow float">
+                  <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="icon-pulse">
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                   </svg>
-                  <span>Award Winning</span>
+                  <span class="text-glow">Award Winning</span>
                 </div>
               </div>
             </div>
@@ -127,7 +132,7 @@
           <p class="text-lg text-secondary">Discover our most popular and highly-rated audio equipment</p>
         </div>
         
-        <div id="featured-products-grid" class="grid grid-auto gap-6">
+        <div id="featured-products-grid" class="product-grid">
           <!-- Featured products will be loaded here -->
         </div>
         
@@ -145,7 +150,7 @@
           <p class="text-lg text-secondary">Find the perfect audio equipment for your needs</p>
         </div>
         
-        <div id="categories-grid" class="categories-grid grid grid-cols-4 gap-6">
+        <div id="categories-grid" class="categories-grid">
           <!-- Categories will be loaded dynamically -->
         </div>
       </div>
@@ -159,7 +164,7 @@
           <p class="text-lg text-secondary">Our most popular audio equipment chosen by customers</p>
         </div>
         
-        <div id="bestsellers-grid" class="grid grid-auto gap-6">
+        <div id="bestsellers-grid" class="product-grid">
           <!-- Best sellers will be loaded here -->
         </div>
       </div>
@@ -334,6 +339,10 @@
   </footer>
 
   <!-- Scripts -->
+  <script src="js/components/product-card.js"></script>
+  <script src="js/components/rating-widget.js"></script>
+  <script src="js/theme-manager.js"></script>
+  <script src="js/animation-controller.js"></script>
   <script src="js/api.js"></script>
   <script src="js/app.js"></script>
   <script src="js/home.js"></script>

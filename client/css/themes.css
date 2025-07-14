@@ -1,0 +1,238 @@
+/* Theme System - Light/Dark Mode Variables */
+
+/* Default (Dark Sci-Fi) Theme */
+:root {
+  /* Dark Sci-Fi Theme Colors */
+  --theme-bg-primary: #111111;
+  --theme-bg-secondary: #1a1a1a;
+  --theme-bg-tertiary: #222222;
+  --theme-bg-glass: rgba(0, 212, 255, 0.05);
+  --theme-bg-glass-hover: rgba(0, 212, 255, 0.1);
+  
+  --theme-text-primary: #ffffff;
+  --theme-text-secondary: #b3b3b3;
+  --theme-text-tertiary: #666666;
+  --theme-text-inverse: #000000;
+  
+  --theme-border: #333333;
+  --theme-border-light: #404040;
+  --theme-shadow: rgba(0, 0, 0, 0.5);
+  --theme-shadow-light: rgba(0, 0, 0, 0.3);
+  --theme-shadow-dark: rgba(0, 0, 0, 0.8);
+  
+  /* Electric Neon Colors for Sci-Fi Theme */
+  --theme-neon-primary: #00d4ff;
+  --theme-neon-secondary: #ff006e;
+  --theme-neon-accent: #00ffff;
+  --theme-neon-electric: #00ff88;
+  --theme-glow-primary: rgba(0, 212, 255, 0.6);
+  --theme-glow-secondary: rgba(255, 0, 110, 0.6);
+  --theme-glow-accent: rgba(0, 255, 255, 0.6);
+  --theme-glow-electric: rgba(0, 255, 136, 0.6);
+  
+  /* Cyberpunk gradients */
+  --bg-primary: linear-gradient(135deg, #111111 0%, #1a1a1a 50%, #222222 100%);
+  --electric-gradient: linear-gradient(45deg, #00d4ff, #ff006e, #00ffff, #00ff88);
+}
+
+/* Light Theme (Alternative) */
+[data-theme="light"] {
+  /* Light Theme Colors */
+  --theme-bg-primary: #ffffff;
+  --theme-bg-secondary: #f8f9fa;
+  --theme-bg-tertiary: #f5f7fa;
+  --theme-bg-glass: rgba(255, 255, 255, 0.1);
+  --theme-bg-glass-hover: rgba(255, 255, 255, 0.2);
+  
+  --theme-text-primary: #212121;
+  --theme-text-secondary: #757575;
+  --theme-text-tertiary: #9e9e9e;
+  --theme-text-inverse: #ffffff;
+  
+  --theme-border: #e0e0e0;
+  --theme-border-light: #f0f0f0;
+  --theme-shadow: rgba(0, 0, 0, 0.1);
+  --theme-shadow-light: rgba(0, 0, 0, 0.05);
+  --theme-shadow-dark: rgba(0, 0, 0, 0.15);
+  
+  /* Neon/Glow Colors for Light Theme */
+  --theme-neon-primary: #2196f3;
+  --theme-neon-secondary: #ff9800;
+  --theme-neon-accent: #00bcd4;
+  --theme-glow-primary: rgba(33, 150, 243, 0.3);
+  --theme-glow-secondary: rgba(255, 152, 0, 0.3);
+  --theme-glow-accent: rgba(0, 188, 212, 0.3);
+  
+  /* Light theme gradients */
+  --bg-primary: linear-gradient(120deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+/* Ultra Dark Theme */
+[data-theme="dark"] {
+  /* Ultra Dark Theme Colors */
+  --theme-bg-primary: #0a0a0a;
+  --theme-bg-secondary: #0f0f0f;
+  --theme-bg-tertiary: #151515;
+  --theme-bg-glass: rgba(0, 212, 255, 0.08);
+  --theme-bg-glass-hover: rgba(0, 212, 255, 0.15);
+  
+  --theme-text-primary: #ffffff;
+  --theme-text-secondary: #cccccc;
+  --theme-text-tertiary: #888888;
+  --theme-text-inverse: #000000;
+  
+  --theme-border: #404040;
+  --theme-border-light: #505050;
+  --theme-shadow: rgba(0, 0, 0, 0.8);
+  --theme-shadow-light: rgba(0, 0, 0, 0.6);
+  --theme-shadow-dark: rgba(0, 0, 0, 0.9);
+  
+  /* Enhanced Electric Colors for Ultra Dark Theme */
+  --theme-neon-primary: #00f0ff;
+  --theme-neon-secondary: #ff0080;
+  --theme-neon-accent: #00ff99;
+  --theme-neon-electric: #ffff00;
+  --theme-glow-primary: rgba(0, 240, 255, 0.8);
+  --theme-glow-secondary: rgba(255, 0, 128, 0.8);
+  --theme-glow-accent: rgba(0, 255, 153, 0.8);
+  --theme-glow-electric: rgba(255, 255, 0, 0.8);
+  
+  /* Ultra dark gradients */
+  --bg-primary: linear-gradient(135deg, #0a0a0a 0%, #0f0f0f 50%, #151515 100%);
+}
+
+/* High Contrast Theme */
+[data-theme="high-contrast"] {
+  --theme-bg-primary: #000000;
+  --theme-bg-secondary: #000000;
+  --theme-bg-tertiary: #111111;
+  --theme-bg-glass: rgba(255, 255, 255, 0.1);
+  --theme-bg-glass-hover: rgba(255, 255, 255, 0.2);
+  
+  --theme-text-primary: #ffffff;
+  --theme-text-secondary: #ffffff;
+  --theme-text-tertiary: #cccccc;
+  --theme-text-inverse: #000000;
+  
+  --theme-border: #ffffff;
+  --theme-border-light: #cccccc;
+  --theme-shadow: rgba(255, 255, 255, 0.2);
+  --theme-shadow-light: rgba(255, 255, 255, 0.1);
+  --theme-shadow-dark: rgba(255, 255, 255, 0.3);
+  
+  --theme-neon-primary: #ffff00;
+  --theme-neon-secondary: #ff0000;
+  --theme-neon-accent: #00ff00;
+  --theme-glow-primary: rgba(255, 255, 0, 0.6);
+  --theme-glow-secondary: rgba(255, 0, 0, 0.6);
+  --theme-glow-accent: rgba(0, 255, 0, 0.6);
+}
+
+/* Theme Transition */
+* {
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Apply theme colors to existing elements */
+body {
+  background: var(--theme-bg-primary);
+  color: var(--theme-text-primary);
+}
+
+/* Update existing color variables to use theme system */
+:root {
+  --text-primary: var(--theme-text-primary);
+  --text-secondary: var(--theme-text-secondary);
+  --text-tertiary: var(--theme-text-tertiary);
+  --text-inverse: var(--theme-text-inverse);
+  
+  --white: var(--theme-bg-primary);
+  --bg-light: var(--theme-bg-secondary);
+  --gray-200: var(--theme-border);
+  --gray-300: var(--theme-border-light);
+}
+
+/* Theme Toggle Button Styles */
+.theme-toggle {
+  position: relative;
+  width: 60px;
+  height: 32px;
+  background: var(--theme-border);
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  padding: 2px;
+}
+
+.theme-toggle:hover {
+  background: var(--theme-border-light);
+  box-shadow: 0 0 10px var(--theme-glow-primary);
+}
+
+.theme-toggle-slider {
+  width: 28px;
+  height: 28px;
+  background: var(--theme-bg-primary);
+  border-radius: 50%;
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px var(--theme-shadow);
+}
+
+[data-theme="dark"] .theme-toggle-slider {
+  transform: translateX(28px);
+  background: var(--theme-neon-primary);
+  box-shadow: 0 0 15px var(--theme-glow-primary);
+}
+
+.theme-toggle-icon {
+  width: 16px;
+  height: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-toggle-sun {
+  opacity: 1;
+}
+
+.theme-toggle-moon {
+  opacity: 0;
+  position: absolute;
+}
+
+[data-theme="dark"] .theme-toggle-sun {
+  opacity: 0;
+}
+
+[data-theme="dark"] .theme-toggle-moon {
+  opacity: 1;
+}
+
+/* Accessibility preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --theme-bg-primary: #0a0a0a;
+    --theme-bg-secondary: #121212;
+    --theme-bg-tertiary: #1a1a1a;
+    --theme-text-primary: #ffffff;
+    --theme-text-secondary: #b3b3b3;
+    --theme-text-tertiary: #666666;
+    --theme-border: #333333;
+    --theme-border-light: #2a2a2a;
+  }
+}

@@ -6,14 +6,39 @@ class CartPage {
     this.init();
   }
 
+  // Transform server cart format to client format
+  transformServerCartToClient(serverCart) {
+    return serverCart.map(item => {
+      // Handle both populated and non-populated product data
+      const product = item.product;
+      
+      if (!product) return null; // Skip items with missing product data
+      
+      return {
+        id: product._id || product.id,
+        name: product.name,
+        price: product.price,
+        image: product.images?.[0]?.url || product.image || 'https://via.placeholder.com/120x120?text=No+Image',
+        category: product.category,
+        quantity: item.quantity,
+        product: product._id || product.id // Keep reference for server operations
+      };
+    }).filter(item => item !== null); // Remove null items
+  }
+
   init() {
     this.setupEventListeners();
-    this.loadCart();
+    
+    // Wait a bit for app to initialize, then load cart
+    setTimeout(() => {
+      this.loadCart();
+    }, 100);
   }
 
   setupEventListeners() {
     // Listen for cart updates
     window.addEventListener('cartUpdated', () => {
+      console.log('Cart updated event received, reloading cart...');
       this.loadCart();
     });
 
@@ -68,19 +93,24 @@ class CartPage {
       this.isLoading = true;
       this.showLoading();
 
-      // Get cart from app instance
-      if (window.app) {
-        this.cart = window.app.cart || [];
-      }
-
-      // If user is authenticated, sync with server
-      if (api.isAuthenticated()) {
-        try {
-          const response = await api.getCart();
-          this.cart = response.data?.cart || [];
-        } catch (error) {
-          console.error('Failed to load cart from server:', error);
-          // Fall back to local cart
+      // Get cart from app instance (already transformed)
+      if (window.app && window.app.cart) {
+        this.cart = [...window.app.cart]; // Make a copy
+      } else {
+        // Fallback: load directly if app not available
+        if (api.isAuthenticated()) {
+          try {
+            const response = await api.getCart();
+            const rawServerCart = response.data?.cart || [];
+            this.cart = this.transformServerCartToClient(rawServerCart);
+          } catch (error) {
+            console.error('Failed to load cart from server:', error);
+            this.cart = [];
+          }
+        } else {
+          // Load from localStorage for non-authenticated users
+          const localCart = localStorage.getItem('audioLootCart');
+          this.cart = localCart ? JSON.parse(localCart) : [];
         }
       }
 
@@ -98,6 +128,11 @@ class CartPage {
   renderCart() {
     const cartLayout = document.getElementById('cart-layout');
     const emptyCart = document.getElementById('empty-cart');
+
+    if (!cartLayout || !emptyCart) {
+      console.error('Cart layout elements not found');
+      return;
+    }
 
     if (this.cart.length === 0) {
       cartLayout.style.display = 'none';
@@ -183,37 +218,41 @@ class CartPage {
   }
 
   createCartItem(item) {
+    // Ensure we have valid data
     const image = item.image || 'https://via.placeholder.com/120x120?text=No+Image';
-    const price = item.price || 0;
-    const quantity = item.quantity || 1;
+    const name = item.name || 'Unknown Product';
+    const price = parseFloat(item.price) || 0;
+    const quantity = parseInt(item.quantity) || 1;
     const total = price * quantity;
+    const productId = item.id || item.product || 'unknown';
+    const category = item.category || 'Audio Equipment';
 
     return `
       <div class="cart-item">
         <div class="cart-item-image">
-          <img src="${image}" alt="${item.name}">
+          <img src="${image}" alt="${name}" onerror="this.src='https://via.placeholder.com/120x120?text=No+Image'">
         </div>
         
         <div class="cart-item-details">
           <h4 class="cart-item-name">
-            <a href="product.html?id=${item.id || item.product}">${item.name}</a>
+            <a href="product.html?id=${productId}">${name}</a>
           </h4>
-          <p class="cart-item-category">${item.category || 'Audio Equipment'}</p>
+          <p class="cart-item-category">${category}</p>
           <p class="cart-item-price">${formatPrice(price)} each</p>
         </div>
         
         <div class="cart-item-quantity">
-          <label for="quantity-${item.id || item.product}" class="sr-only">Quantity</label>
+          <label for="quantity-${productId}" class="sr-only">Quantity</label>
           <div class="quantity-controls">
-            <button class="quantity-btn" onclick="cartPage.updateQuantity('${item.id || item.product}', ${quantity - 1})">-</button>
+            <button class="quantity-btn" onclick="cartPage.updateQuantity('${productId}', ${quantity - 1})">-</button>
             <input type="number" 
-                   id="quantity-${item.id || item.product}"
+                   id="quantity-${productId}"
                    class="quantity-input" 
                    value="${quantity}" 
                    min="1" 
                    max="99"
-                   data-product-id="${item.id || item.product}">
-            <button class="quantity-btn" onclick="cartPage.updateQuantity('${item.id || item.product}', ${quantity + 1})">+</button>
+                   data-product-id="${productId}">
+            <button class="quantity-btn" onclick="cartPage.updateQuantity('${productId}', ${quantity + 1})">+</button>
           </div>
         </div>
         
@@ -222,7 +261,7 @@ class CartPage {
         </div>
         
         <div class="cart-item-actions">
-          <button class="remove-item-btn" data-product-id="${item.id || item.product}" aria-label="Remove item">
+          <button class="remove-item-btn" data-product-id="${productId}" aria-label="Remove item">
             <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
             </svg>
@@ -309,12 +348,14 @@ class CartPage {
 
   // Calculation methods
   getItemCount() {
-    return this.cart.reduce((total, item) => total + (item.quantity || 1), 0);
+    return this.cart.reduce((total, item) => total + (parseInt(item.quantity) || 1), 0);
   }
 
   getSubtotal() {
     return this.cart.reduce((total, item) => {
-      return total + ((item.price || 0) * (item.quantity || 1));
+      const price = parseFloat(item.price) || 0;
+      const quantity = parseInt(item.quantity) || 1;
+      return total + (price * quantity);
     }, 0);
   }
 

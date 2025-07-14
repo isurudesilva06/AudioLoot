@@ -223,6 +223,26 @@ class AudioLootApp {
     }
   }
 
+  // Transform server cart format to client format
+  transformServerCartToClient(serverCart) {
+    return serverCart.map(item => {
+      // Handle both populated and non-populated product data
+      const product = item.product;
+      
+      if (!product) return null; // Skip items with missing product data
+      
+      return {
+        id: product._id || product.id,
+        name: product.name,
+        price: product.price,
+        image: product.images?.[0]?.url || product.image || 'https://via.placeholder.com/120x120?text=No+Image',
+        category: product.category,
+        quantity: item.quantity,
+        product: product._id || product.id // Keep reference for server operations
+      };
+    }).filter(item => item !== null); // Remove null items
+  }
+
   async syncCartWithServer() {
     if (!this.isAuthenticated) return;
 
@@ -244,9 +264,10 @@ class AudioLootApp {
         showSuccess('Cart synced successfully');
       }
 
-      // Load updated cart from server
+      // Load updated cart from server and transform it
       const updatedResponse = await api.getCart();
-      this.cart = updatedResponse.data?.cart || [];
+      const rawServerCart = updatedResponse.data?.cart || [];
+      this.cart = this.transformServerCartToClient(rawServerCart);
       this.updateCartUI();
 
     } catch (error) {
@@ -260,7 +281,8 @@ class AudioLootApp {
       if (this.isAuthenticated) {
         // Add to server cart
         const response = await api.addToCart(productId, quantity);
-        this.cart = response.data?.cart || [];
+        const rawServerCart = response.data?.cart || [];
+        this.cart = this.transformServerCartToClient(rawServerCart);
         showSuccess('Item added to cart');
       } else {
         // Add to local cart
@@ -303,7 +325,8 @@ class AudioLootApp {
     try {
       if (this.isAuthenticated) {
         const response = await api.removeFromCart(productId);
-        this.cart = response.data?.cart || [];
+        const rawServerCart = response.data?.cart || [];
+        this.cart = this.transformServerCartToClient(rawServerCart);
       } else {
         this.cart = this.cart.filter(item => 
           (item.id || item.product) !== productId
@@ -329,7 +352,8 @@ class AudioLootApp {
 
       if (this.isAuthenticated) {
         const response = await api.updateCartItem(productId, quantity);
-        this.cart = response.data?.cart || [];
+        const rawServerCart = response.data?.cart || [];
+        this.cart = this.transformServerCartToClient(rawServerCart);
       } else {
         const item = this.cart.find(item => 
           (item.id || item.product) === productId

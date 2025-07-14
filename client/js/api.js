@@ -1,7 +1,7 @@
 // API Service for AudioLoot
 class APIService {
   constructor() {
-    this.baseURL = 'http://localhost:5000/api';
+    this.baseURL = 'http://localhost:5001/api';
     this.token = localStorage.getItem('audioLootToken');
   }
 
@@ -383,12 +383,33 @@ window.debounce = function(func, wait) {
 };
 
 // Initialize auth state on page load
-document.addEventListener('DOMContentLoaded', function() {
-  // Check if user is logged in and update UI
-  const user = api.getCurrentUser();
-  if (user) {
+document.addEventListener('DOMContentLoaded', async function() {
+  // Check if user has a token
+  const token = api.getToken();
+  if (token) {
+    try {
+      // Validate token with server
+      const response = await api.getMe();
+      
+      // Token is valid, update auth state
+      window.dispatchEvent(new CustomEvent('authStateChange', { 
+        detail: { isAuthenticated: true, user: response } 
+      }));
+    } catch (error) {
+      console.log('Token validation failed:', error);
+      
+      // Token is invalid, clear auth data
+      api.clearAuth();
+      
+      // Update UI to show login/signup buttons
+      window.dispatchEvent(new CustomEvent('authStateChange', { 
+        detail: { isAuthenticated: false, user: null } 
+      }));
+    }
+  } else {
+    // No token, ensure UI shows login/signup buttons
     window.dispatchEvent(new CustomEvent('authStateChange', { 
-      detail: { isAuthenticated: true, user } 
+      detail: { isAuthenticated: false, user: null } 
     }));
   }
 });
