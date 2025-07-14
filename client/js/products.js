@@ -1,3 +1,4 @@
+console.log('products.js loaded');
 // Products Page JavaScript
 class ProductsPage {
   constructor() {
@@ -15,7 +16,7 @@ class ProductsPage {
       maxPrice: '',
       brand: '',
       rating: '',
-      sort: 'featured'
+      sort: 'newest' // changed from 'featured' to 'newest'
     };
 
     this.init();
@@ -195,8 +196,10 @@ class ProductsPage {
         }
       });
 
+      console.log('Calling api.getProducts with params:', params); // DEBUG: Log params
       const response = await api.getProducts(params);
       const data = response.data;
+      console.log('Fetched products:', data.products); // DEBUG: Log fetched products
 
       if (reset) {
         this.products = data.products || [];
@@ -500,7 +503,7 @@ class ProductsPage {
       maxPrice: '',
       brand: '',
       rating: '',
-      sort: 'featured'
+      sort: 'newest' // changed from 'featured' to 'newest'
     };
 
     // Reset form elements
@@ -514,7 +517,7 @@ class ProductsPage {
     if (maxPriceInput) maxPriceInput.value = '';
 
     const sortSelect = document.getElementById('sort-select');
-    if (sortSelect) sortSelect.value = 'featured';
+    if (sortSelect) sortSelect.value = 'newest'; // changed from 'featured' to 'newest'
 
     // Reset radio buttons
     const categoryInputs = document.querySelectorAll('input[name="category"]');
