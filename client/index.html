@@ -26,6 +26,10 @@
   <header class="header">
     <nav class="navbar container">
       
+      <!-- Logo -->
+      <a href="index.html" class="logo">
+        <img src="assets/logo.png" alt="Audio Loot Logo">
+      </a>
       
       <div class="nav-links">
         <a href="index.html">Home</a>
@@ -78,10 +82,10 @@
           <img src="assets/1.png" alt="Headphones" class="gbz-watch" style="position: static; width: 220px; height: auto; box-shadow: none; border-radius: 2rem;">
         </div>
         <div class="gbz-features gbz-features-right">
-          <div class="gbz-feature"><span class="gbz-feature-icon">🏃‍♂️</span> Fitness Tracking</div>
-          <div class="gbz-feature"><span class="gbz-feature-icon">🎵</span> Music Control</div>
-          <div class="gbz-feature"><span class="gbz-feature-icon">🔗</span> Compatibility</div>
-          <div class="gbz-feature"><span class="gbz-feature-icon">📍</span> GPS Tracking</div>
+          <div class="gbz-feature"><span class="gbz-feature-icon">🔊</span> Deep Bass</div>
+          <div class="gbz-feature"><span class="gbz-feature-icon">🟦</span> Bluetooth 5.3</div>
+          <div class="gbz-feature"><span class="gbz-feature-icon">🔋</span> 24H Battery Life</div>
+          <div class="gbz-feature"><span class="gbz-feature-icon">🤫</span> Noise Cancellation</div>
         </div>
       </div>
     </div>
@@ -98,13 +102,11 @@
         display: flex; align-items: center; justify-content: space-between;
         padding-bottom: 1.5rem; border-bottom: 1px solid #e0e7ef;
       }
-      .gbz-logo { display: flex; align-items: center; font-size: 1.5rem; font-weight: 700; }
-      .gbz-logo-icon { font-size: 2rem; margin-right: 0.5rem; color: #2196f3; }
-      .gbz-logo-text { letter-spacing: 1px; }
-      .gbz-nav a {
-        margin: 0 1rem; color: #222; text-decoration: none; font-weight: 500;
-        transition: color 0.2s;
-      }
+      .logo {
+       height: 10%; width: 10%; 
+     
+
+    }
       .gbz-nav a:hover { color: #2196f3; }
       .gbz-actions { display: flex; align-items: center; gap: 0.5rem; }
       .gbz-icon-btn {
@@ -123,11 +125,25 @@
         display: flex; align-items: center; justify-content: space-between;
         margin-top: 2.5rem; position: relative;
       }
-      .gbz-left { flex: 1.2; }
-      .gbz-title {
-        font-size: 2.8rem; font-weight: 800; margin-bottom: 1.2rem; line-height: 1.1;
+      .gbz-left {
+        flex: 1.2;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        text-align: left;
       }
-      .gbz-desc { font-size: 1.15rem; color: #222; margin-bottom: 1.8rem; }
+      .gbz-title {
+        font-size: 4rem;
+        font-weight: 900;
+        margin-bottom: 1.5rem;
+        line-height: 1.1;
+      }
+      .gbz-desc {
+        font-size: 2rem;
+        color: #222;
+        margin-bottom: 2.2rem;
+      }
       .gbz-learn-more {
         display: inline-block; background: #2196f3; color: #fff; padding: 0.7rem 1.5rem;
         border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 1rem;

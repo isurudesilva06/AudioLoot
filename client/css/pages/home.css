@@ -817,6 +817,15 @@
 }
 .gadgetbazar-landing {
   margin-top: 80px; /* Add space below navbar, adjust as needed */
+  position: relative;
+}
+
+/* Position the landing page logo at the top left */
+.landing-logo {
+  position: absolute;
+  top: 32px;
+  left: 32px;
+  z-index: 20;
 }
 
 /* Flex layout for landing page */
