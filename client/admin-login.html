@@ -4,33 +4,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AudioLoot Admin Login</title>
-  <link rel="stylesheet" href="css/pages/auth.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/pages/admin.css">
 </head>
 <body>
-  <div class="auth-page">
-    <div class="auth-container">
-      <div class="auth-card">
-        <div class="auth-header">
-          <a href="/" class="auth-logo">
-            <!-- Logo icon if available -->
-            <span>AudioLoot</span>
-          </a>
-          <div class="auth-title">Admin Login</div>
-        </div>
-        <form id="admin-login-form" class="auth-form" autocomplete="off">
-          <div class="form-group">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" id="email" name="email" class="form-input" required autofocus>
-            <div id="email-error" class="form-error"></div>
-          </div>
-          <div class="form-group">
-            <label for="password" class="form-label">Password</label>
-            <input type="password" id="password" name="password" class="form-input" required minlength="6">
-            <div id="password-error" class="form-error"></div>
-          </div>
-          <button type="submit" id="admin-login-btn" class="auth-submit">Login</button>
-        </form>
+  <div class="container flex justify-center items-center" style="min-height: 100vh;">
+    <div class="card p-6" style="max-width: 400px; width: 100%;">
+      <div class="text-center mb-8">
+        <a href="/" class="logo" style="font-size: 2rem; font-weight: bold; color: var(--primary-color); text-decoration: none;">
+          Audio<span>Loot</span>
+        </a>
+        <h1 class="mt-4 mb-2">Admin Login</h1>
       </div>
+      <form id="admin-login-form" autocomplete="off">
+        <div class="form-group mb-4">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" id="email" name="email" class="form-input" required autofocus>
+          <div id="email-error" class="form-error"></div>
+        </div>
+        <div class="form-group mb-6">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" id="password" name="password" class="form-input" required minlength="6">
+          <div id="password-error" class="form-error"></div>
+        </div>
+        <button type="submit" id="admin-login-btn" class="btn btn-primary w-full">Login</button>
+      </form>
     </div>
   </div>
   <script src="js/api.js"></script>

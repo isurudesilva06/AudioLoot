@@ -4,60 +4,61 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Add Product | AudioLoot</title>
-  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/pages/admin.css">
 </head>
 <body>
-  <div class="admin-dashboard">
-    <header class="admin-header">
-      <div class="admin-title">Admin Dashboard</div>
-      <button id="admin-logout-btn" class="admin-logout">Logout</button>
-    </header>
-    <aside class="admin-sidebar">
-      <nav>
-        <ul>
-          <li><a href="admin-products.html">Products</a></li>
-          <li><a href="admin-orders.html">Orders</a></li>
-          <li><a href="add-product.html" class="active">Add Product</a></li>
-          <li><a href="#" id="sidebar-logout-link">Logout</a></li>
-        </ul>
-      </nav>
-    </aside>
-    <main class="admin-main">
-      <div class="admin-add-product-header">
-        <h1>Add Product</h1>
-      </div>
-      <form id="add-product-form" class="admin-product-form" enctype="multipart/form-data" autocomplete="off">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" required>
-        </div>
-        <div class="form-group">
-          <label for="description">Description</label>
-          <textarea id="description" name="description" rows="3" required></textarea>
-        </div>
-        <div class="form-group">
-          <label for="price">Price ($)</label>
-          <input type="number" id="price" name="price" step="0.01" min="0" required>
-        </div>
-        <div class="form-group">
-          <label for="category">Category</label>
-          <input type="text" id="category" name="category" required>
-        </div>
-        <div class="form-group">
-          <label for="brand">Brand</label>
-          <input type="text" id="brand" name="brand" required>
-        </div>
-        <div class="form-group">
-          <label for="stock">Stock</label>
-          <input type="number" id="stock" name="stock" min="0" required>
-        </div>
-        <div class="form-group">
-          <label for="image">Image</label>
-          <input type="file" id="image" name="image" accept="image/*">
-        </div>
-        <button type="submit" class="admin-btn submit-btn">Add Product</button>
-      </form>
-    </main>
+  <div class="container" style="padding-top: 2rem;">
+    <div class="flex gap-8">
+      <aside class="admin-sidebar">
+        <nav class="admin-nav">
+          <a href="admin-dashboard.html">Dashboard</a>
+          <a href="admin-products.html">Products</a>
+          <a href="admin-orders.html">Orders</a>
+          <a href="add-product.html" class="active">Add Product</a>
+          <a href="#" id="sidebar-logout-link">Logout</a>
+        </nav>
+      </aside>
+      <main class="main-content flex-1">
+        <section class="section">
+          <div class="section-header mb-8">
+            <h1>Add Product</h1>
+            <p class="text-lg text-secondary">Enter product details below</p>
+          </div>
+          <form id="add-product-form" autocomplete="off" enctype="multipart/form-data" class="card p-6" style="max-width: 600px;">
+            <div class="form-group mb-4">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" id="name" name="name" class="form-input" required>
+            </div>
+            <div class="form-group mb-4">
+              <label for="description" class="form-label">Description</label>
+              <textarea id="description" name="description" rows="3" class="form-input" required></textarea>
+            </div>
+            <div class="form-group mb-4">
+              <label for="price" class="form-label">Price ($)</label>
+              <input type="number" id="price" name="price" class="form-input" step="0.01" min="0" required>
+            </div>
+            <div class="form-group mb-4">
+              <label for="category" class="form-label">Category</label>
+              <input type="text" id="category" name="category" class="form-input" required>
+            </div>
+            <div class="form-group mb-4">
+              <label for="brand" class="form-label">Brand</label>
+              <input type="text" id="brand" name="brand" class="form-input" required>
+            </div>
+            <div class="form-group mb-4">
+              <label for="stock" class="form-label">Stock</label>
+              <input type="number" id="stock" name="stock" class="form-input" min="0" required>
+            </div>
+            <div class="form-group mb-6">
+              <label for="image" class="form-label">Image</label>
+              <input type="file" id="image" name="image" class="form-input" accept="image/*">
+            </div>
+            <button type="submit" class="btn btn-primary w-full">Add Product</button>
+          </form>
+        </section>
+      </main>
+    </div>
   </div>
   <script src="js/api.js"></script>
   <script src="js/admin/dashboard.js"></script>
