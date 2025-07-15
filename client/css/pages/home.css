@@ -989,12 +989,12 @@
   }
 }
 
-/* Fix dark mode for Shop by Category and Testimonials sections */
-.categories, .testimonials {
+/* Fix dark mode for Shop by Category section */
+.categories {
   background: var(--theme-bg-primary) !important;
   color: var(--theme-text-primary) !important;
 }
-.section-header h2, .section-header p, .testimonial-quote, .testimonial-author {
+.section-header h2, .section-header p {
   color: var(--theme-text-primary) !important;
 }
 
