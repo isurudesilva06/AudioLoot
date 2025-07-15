@@ -989,6 +989,15 @@
   }
 }
 
+/* Fix dark mode for Shop by Category and Testimonials sections */
+.categories, .testimonials {
+  background: var(--theme-bg-primary) !important;
+  color: var(--theme-text-primary) !important;
+}
+.section-header h2, .section-header p, .testimonial-quote, .testimonial-author {
+  color: var(--theme-text-primary) !important;
+}
+
 body, .gadgetbazar-landing, .gbz-container, .gbz-main, .gbz-header, .gbz-left, .gbz-center, .gbz-features, .gbz-feature, .nav-links, .navbar, .header {
   background: var(--theme-bg-primary) !important;
   color: var(--theme-text-primary) !important;
