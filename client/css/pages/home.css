@@ -988,3 +988,8 @@
     font-size: var(--font-size-lg);
   }
 }
+
+body, .gadgetbazar-landing, .gbz-container, .gbz-main, .gbz-header, .gbz-left, .gbz-center, .gbz-features, .gbz-feature, .nav-links, .navbar, .header {
+  background: var(--theme-bg-primary) !important;
+  color: var(--theme-text-primary) !important;
+}
