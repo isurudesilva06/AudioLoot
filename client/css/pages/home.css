@@ -812,11 +812,19 @@
 
 /* Fix navbar overlap and add spacing to landing section */
 .header {
-  position: relative;
-  z-index: 10;
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 9999;
+}
+.navbar {
+  position: relative !important;
+  z-index: 10000;
 }
 .gadgetbazar-landing {
-  margin-top: 80px; /* Add space below navbar, adjust as needed */
+  margin-top: 100px !important;
   position: relative;
 }
 
@@ -1001,4 +1009,21 @@
 body, .gadgetbazar-landing, .gbz-container, .gbz-main, .gbz-header, .gbz-left, .gbz-center, .gbz-features, .gbz-feature, .nav-links, .navbar, .header {
   background: var(--theme-bg-primary) !important;
   color: var(--theme-text-primary) !important;
+}
+
+/* Ensure navbar is always visible on scroll */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Ensure navbar stays visible and above all content */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 200;
 }

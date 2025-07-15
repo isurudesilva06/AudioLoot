@@ -1,63 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard | AudioLoot</title>
-  <!-- Global Styles -->
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/pages/admin.css">
-</head>
-<body>
-  <div class="container" style="padding-top: 2rem;">
-    <div class="flex gap-8">
-      <!-- Sidebar -->
-      <aside class="admin-sidebar">
-        <nav class="admin-nav">
-          <a href="admin-dashboard.html" class="active">Dashboard</a>
-          <a href="admin-products.html">Products</a>
-          <a href="admin-orders.html">Orders</a>
-          <a href="add-product.html">Add Product</a>
-          <a href="#" id="sidebar-logout-link">Logout</a>
-        </nav>
-      </aside>
-      <!-- Main Content -->
-      <main class="main-content flex-1">
-        <section class="section">
-          <div class="section-header mb-8">
-            <h1>Admin Dashboard</h1>
-            <p class="text-lg text-secondary">Manage products, orders, and more</p>
-            <button id="admin-logout-btn" class="btn btn-outline mt-4" style="float: right;">Logout</button>
-          </div>
-          <div class="grid grid-cols-3 gap-8">
-            <div class="admin-widget card">
-              <div class="card-header font-bold mb-4">Products</div>
-              <div class="card-body">
-                <p class="text-xl font-bold">--</p>
-                <p class="text-secondary">Total Products</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard | AudioLoot</title>
+    <!-- Global Styles -->
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/pages/admin.css" />
+  </head>
+  <body>
+    <div class="container" style="padding-top: 2rem">
+      <div class="flex gap-8">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+          <nav class="admin-nav">
+            <a href="admin-dashboard.html" class="active">Dashboard</a>
+            <a href="admin-products.html">Products</a>
+            <a href="admin-orders.html">Orders</a>
+            <a href="add-product.html">Add Product</a>
+            <a href="#" id="sidebar-logout-link">Logout</a>
+          </nav>
+        </aside>
+        <!-- Main Content -->
+        <main class="main-content flex-1">
+          <section class="section">
+            <div class="section-header mb-8">
+              <h1>Admin Dashboard</h1>
+              <p class="text-lg text-secondary">
+                Manage products, orders, and more
+              </p>
+              <button
+                id="admin-logout-btn"
+                class="btn btn-outline mt-4"
+                style="float: right"
+              >
+                Logout
+              </button>
+            </div>
+            <div class="grid grid-cols-3 gap-8">
+              <div class="admin-widget card">
+                <div class="card-header font-bold mb-4">Products</div>
+                <div class="card-body">
+                  <p class="text-xl font-bold">--</p>
+                  <p class="text-secondary">Total Products</p>
+                </div>
+              </div>
+              <div class="admin-widget card">
+                <div class="card-header font-bold mb-4">Orders</div>
+                <div class="card-body">
+                  <p class="text-xl font-bold">--</p>
+                  <p class="text-secondary">Total Orders</p>
+                </div>
+              </div>
+              <div class="admin-widget card">
+                <div class="card-header font-bold mb-4">Revenue</div>
+                <div class="card-body">
+                  <p class="text-xl font-bold">--</p>
+                  <p class="text-secondary">Total Revenue</p>
+                </div>
               </div>
             </div>
-            <div class="admin-widget card">
-              <div class="card-header font-bold mb-4">Orders</div>
-              <div class="card-body">
-                <p class="text-xl font-bold">--</p>
-                <p class="text-secondary">Total Orders</p>
-              </div>
-            </div>
-            <div class="admin-widget card">
-              <div class="card-header font-bold mb-4">Revenue</div>
-              <div class="card-body">
-                <p class="text-xl font-bold">--</p>
-                <p class="text-secondary">Total Revenue</p>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
+          </section>
+        </main>
+      </div>
     </div>
-  </div>
-  <script src="js/api.js"></script>
-  <script src="js/admin/dashboard.js"></script>
-  <script src="js/theme-manager.js"></script>
-</body>
+    <script src="js/api.js"></script>
+    <script src="js/admin/dashboard.js"></script>
+    <script src="js/theme-manager.js"></script>
+  </body>
 </html>
